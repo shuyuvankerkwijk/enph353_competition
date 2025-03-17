@@ -1,0 +1,14 @@
+<launch>
+   <!-- My Package launch file -->
+   <node pkg="neural_net_driving"
+         type="Driving_code.py"
+         name="Driving_code" 
+         output="screen">
+   </node>
+
+   <node pkg="image_collection"
+         type="section_detector.py"
+         name="section_detector" 
+         output="screen">
+   </node>
+</launch>

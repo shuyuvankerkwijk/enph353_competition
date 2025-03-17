@@ -1,0 +1,20 @@
+<launch>
+   <!-- My Package launch file -->
+   <node pkg="image_collection"
+         type="Controller_code.py"
+         name="Controller_code" 
+         output="screen">
+   </node>
+
+   <node pkg="image_collection"
+         type="section_detector.py"
+         name="section_detector" 
+         output="screen">
+   </node>
+
+   <node pkg="image_collection"
+         type="writing_of_images.py"
+         name="writing_of_images" 
+         output="screen">
+   </node>
+</launch>
