@@ -3,8 +3,8 @@
 import serial
 import re
 import rospy
-from std_msgs.msg import Bool
 from geometry_msgs.msg import Twist
+from std_msgs.msg import String, Bool
 
 
 # ----------------------------------------------------------------------
@@ -30,10 +30,9 @@ class DataCollection:
         self.y = 0.0
         self.r = False
         self.ser = None
-        self.timeout = 0.1  # seconds to wait for a valid message
-
-        # We'll use this buffer to store partial serial data between reads.
+        self.timeout = 0.1 
         self._static_buffer = ""
+        self.run = False
 
     def setup_serial(self):
         """Initialize the serial connection in non-blocking mode."""
@@ -80,6 +79,9 @@ class DataCollection:
             return latest_valid_msg
 
         return None
+    
+    def state(self, msg):
+        self.run = msg.data
 
 
 # ----------------------------------------------------------------------
@@ -92,7 +94,7 @@ def joystick_publisher():
 
     # Example publishers
     pub_cmd = rospy.Publisher('/B1/cmd_vel', Twist, queue_size=1)
-    pub_record = rospy.Publisher('/record_topic', Bool, queue_size=1)
+    rospy.Subscriber('/teleop', Bool, data_saver.state)
 
     # Give ROS some time to set up
     rospy.sleep(1)
@@ -105,7 +107,7 @@ def joystick_publisher():
 
     while not rospy.is_shutdown():
         joystick_data = data_saver.read_latest_joystick()
-        if joystick_data:
+        if joystick_data and data_saver.run:
             x, y, r = joystick_data
 
             # Create and publish a Twist message
@@ -114,7 +116,6 @@ def joystick_publisher():
             velocity.angular.z = -x
 
             pub_cmd.publish(velocity)
-            pub_record.publish(Bool(r))
 
         rate.sleep()  # Sleep to maintain 20Hz loop
 
