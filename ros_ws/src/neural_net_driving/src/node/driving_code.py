@@ -10,6 +10,7 @@ from cv_bridge import CvBridge, CvBridgeError
 import cv2
 import tensorflow as tf
 import numpy as np
+import os
 
 IMG_HEIGHT = 316
 IMG_WIDTH = 384
@@ -21,10 +22,14 @@ class CNN_driving_class:
         self.bridge = CvBridge()
         self.model = None
         self.run = False
-        self.model_Road = tf.keras.models.load_model('/home/fizzer/images_for_cnn_training/Road/best_model.h5')
-        self.model_Gravel = tf.keras.models.load_model('/home/fizzer/images_for_cnn_training/Gravel/best_model.h5')
-        self.model_OffRoad = tf.keras.models.load_model('/home/fizzer/images_for_cnn_training/OffRoad/best_model.h5')
-        self.model_ramp = tf.keras.models.load_model('/home/fizzer/images_for_cnn_training/ramp/best_model.h5')
+        filename = os.path.join("..","..","..","..","training_for_driving/Road",'best_model.h5')
+        self.model_Road = tf.keras.models.load_model(filename)
+        filename = os.path.join("..","..","..","..","training_for_driving/Gravel",'best_model.h5')
+        self.model_Gravel = tf.keras.models.load_model(filename)
+        filename = os.path.join("..","..","..","..","training_for_driving/OffRoad",'best_model.h5')
+        self.model_OffRoad = tf.keras.models.load_model(filename)
+        filename = os.path.join("..","..","..","..","training_for_driving/ramp",'best_model.h5')
+        self.model_ramp = tf.keras.models.load_model(filename)
 
     def image_callback(self, msg):
         try:
