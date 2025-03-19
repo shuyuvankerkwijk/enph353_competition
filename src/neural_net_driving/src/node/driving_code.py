@@ -42,6 +42,9 @@ class CNN_driving_class:
                 rospy.loginfo('Lin: '+ str(lin_pred)+' Ang: '+str(ang_pred))
 
                 velocity = Twist()
+
+                if lin_pred<0.0:
+                    lin_pred = 0.0
                 velocity.linear.x = lin_pred
                 velocity.angular.z = ang_pred
 

@@ -19,7 +19,6 @@ class MapSectionDetector:
         self.pub_sec = rospy.Publisher('/track_section', String, queue_size=1)
         self.last_transition = rospy.Time.now().to_sec()
         self.transition_cooldown = 5
-        self.frame_counter = 0
         self.run = True
         self.teleop = False
         self.auto = False
@@ -37,7 +36,7 @@ class MapSectionDetector:
                 return
             
             if rospy.Time.now().to_sec() - self.last_transition > self.transition_cooldown:
-                self.frame_counter = 0
+                
 
                 h, w, _ = img.shape
 
@@ -62,10 +61,21 @@ class MapSectionDetector:
             self.pub_sec.publish(self.section)
 
     def reset(self, msg):
-        if msg.data:
+        if msg.data == 'Void':
+            return
+        elif msg.data == 'Reset':
             self.section = 'Road'
             self.last_transition = rospy.Time.now().to_sec()
-            self.frame_counter = 0
+        elif msg.data == 'Gravel':
+            self.section = 'Gravel'
+            self.last_transition = rospy.Time.now().to_sec()
+        elif msg.data == 'OffRoad':
+            self.section = 'OffRoad'
+            self.last_transition = rospy.Time.now().to_sec()
+        elif msg.data == 'ramp':
+            self.section = 'ramp'
+            self.last_transition = rospy.Time.now().to_sec()
+
 
     def teleop_state(self, msg):
         self.teleop = msg.data
@@ -82,7 +92,7 @@ def image_subscriber():
 
     # Example publishers
     rospy.Subscriber('/B1/rrbot/camera1/image_raw', Image, data_saver.image_callback)
-    rospy.Subscriber('/reset', Bool, data_saver.reset)
+    rospy.Subscriber('/reset', String, data_saver.reset)
     rospy.Subscriber('/teleop', Bool, data_saver.teleop_state)
     rospy.Subscriber('/auto', Bool, data_saver.auto_state)
     

@@ -6,6 +6,9 @@ from cv_bridge import CvBridge, CvBridgeError
 from std_msgs.msg import String
 import cv2
 import numpy as np
+from gazebo_msgs.msg import ModelState
+from gazebo_msgs.srv import SetModelState
+from pynput import keyboard
 
 lower_pink = np.array([240,  0, 240])    # B=0, G=0, R=120
 upper_pink = np.array([255, 10, 255]) # B=100, G=100, R=255
@@ -20,7 +23,36 @@ class MapSectionDetector:
         self.last_transition = rospy.Time.now().to_sec()
         self.transition_cooldown = 5 #TODO change it so that line has to exit screen to reset
         self.frame_counter = 0
-        
+
+        self.listener = keyboard.Listener(on_press=self.parse)
+        self.listener.start()
+
+    def parse(self, key):
+        try:
+            if key.char == 'r':  # reset to home
+                self.section = 'Road'
+
+                msg = ModelState()
+                msg.model_name = 'B1'
+
+                msg.pose.position.x = 5.5
+                msg.pose.position.y = 2.5
+                msg.pose.position.z = 0.2
+                msg.pose.orientation.x = 0.0
+                msg.pose.orientation.y = 0.0
+                msg.pose.orientation.z = 0.0
+                msg.pose.orientation.w = 0.0
+
+                rospy.wait_for_service('/gazebo/set_model_state')
+                try:
+                    set_state = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)
+                    resp = set_state(msg)
+                except rospy.ServiceException:
+                    rospy.logerr("Service call to set_model_state failed")
+
+        except AttributeError:
+            # Ignore special keys (Shift, Ctrl, etc.)
+            pass
 
 
     def image_callback(self, msg):
