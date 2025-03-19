@@ -57,7 +57,7 @@ class MapSectionDetector:
                 elif self.section == 'OffRoad':
                     self.section = 'ramp'
                 
-            self.pub_sec.publish(self.section)
+        self.pub_sec.publish(self.section)
 
 
 def image_subscriber():
