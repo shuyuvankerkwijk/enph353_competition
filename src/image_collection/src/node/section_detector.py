@@ -7,8 +7,8 @@ from std_msgs.msg import String
 import cv2
 import numpy as np
 
-lower_pink = np.array([0,  0, 120])    # B=0, G=0, R=120
-upper_pink = np.array([100, 100, 255]) # B=100, G=100, R=255
+lower_pink = np.array([240,  0, 240])    # B=0, G=0, R=120
+upper_pink = np.array([255, 10, 255]) # B=100, G=100, R=255
 
 
 class MapSectionDetector:
@@ -18,7 +18,7 @@ class MapSectionDetector:
         self.section = 'Road'
         self.pub_sec = rospy.Publisher('/track_section', String, queue_size=1)
         self.last_transition = rospy.Time.now().to_sec()
-        self.transition_cooldown = 5
+        self.transition_cooldown = 5 #TODO change it so that line has to exit screen to reset
         self.frame_counter = 0
         
 
@@ -41,9 +41,6 @@ class MapSectionDetector:
 
             crop_top = int(0.8 * h)
             bottom_region = img[crop_top:, :]
-
-            lower_pink = np.array([240,  0, 240])    # B=0, G=0, R=120
-            upper_pink = np.array([255, 10, 255]) # B=100, G=100, R=255
 
             # Create a mask of pixels that fall within our "pinkish" BGR range
             pink_mask = cv2.inRange(bottom_region, lower_pink, upper_pink)

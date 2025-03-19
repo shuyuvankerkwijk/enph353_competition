@@ -82,7 +82,7 @@ def image_subscriber():
 
     # Example publishers
     rospy.Subscriber('/B1/rrbot/camera1/image_raw', Image, data_saver.image_callback)
-    rospy.Subscriber('/reset', Bool, data_saver.reset())
+    rospy.Subscriber('/reset', Bool, data_saver.reset)
     rospy.Subscriber('/teleop', Bool, data_saver.teleop_state)
     rospy.Subscriber('/auto', Bool, data_saver.auto_state)
     
