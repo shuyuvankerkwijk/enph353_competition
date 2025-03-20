@@ -30,29 +30,97 @@ class MapSectionDetector:
     def parse(self, key):
         try:
             if key.char == 'r':  # reset to home
+                self.teleport_start()
                 self.section = 'Road'
-
-                msg = ModelState()
-                msg.model_name = 'B1'
-
-                msg.pose.position.x = 5.5
-                msg.pose.position.y = 2.5
-                msg.pose.position.z = 0.2
-                msg.pose.orientation.x = 0.0
-                msg.pose.orientation.y = 0.0
-                msg.pose.orientation.z = 0.0
-                msg.pose.orientation.w = 0.0
-
-                rospy.wait_for_service('/gazebo/set_model_state')
-                try:
-                    set_state = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)
-                    resp = set_state(msg)
-                except rospy.ServiceException:
-                    rospy.logerr("Service call to set_model_state failed")
-
+            elif key.char == 'g': #teleport to gravel start just slightly past view of pink line
+                self.teleport_gravel()
+                self.section = 'Gravel'
+            elif key.char == 'o': #teleport to offroard start
+                self.teleport_offroad()
+                self.section = 'OffRoad'
+            elif key.char == 'h':  #teleport to hill start
+                self.teleport_hill()
+                self.section = 'ramp'
         except AttributeError:
             # Ignore special keys (Shift, Ctrl, etc.)
             pass
+
+    def teleport_gravel(self):
+
+        msg = ModelState()
+        msg.model_name = 'B1'
+        msg.pose.position.x = 0.5
+        msg.pose.position.y = 0
+        msg.pose.position.z = 0.2
+        msg.pose.orientation.x = 0.0
+        msg.pose.orientation.y = 0.0
+        msg.pose.orientation.z = -1.57
+        msg.pose.orientation.w = 0.0
+
+        rospy.wait_for_service('/gazebo/set_model_state')
+        try:
+            set_state = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)
+            resp = set_state(msg)
+        except rospy.ServiceException:
+            rospy.logerr("Service call to set_model_state failed")
+
+
+    def teleport_offroad(self):
+
+        msg = ModelState()
+        msg.model_name = 'B1'
+        msg.pose.position.x = -3.9
+        msg.pose.position.y = 0.5
+        msg.pose.position.z = 0.2
+        msg.pose.orientation.x = 0.0
+        msg.pose.orientation.y = 0.0
+        msg.pose.orientation.z = -1.57
+        msg.pose.orientation.w = 0.0
+
+        rospy.wait_for_service('/gazebo/set_model_state')
+        try:
+            set_state = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)
+            resp = set_state(msg)
+        except rospy.ServiceException:
+            rospy.logerr("Service call to set_model_state failed")
+
+    def teleport_hill(self):
+
+        msg = ModelState()
+        msg.model_name = 'B1'
+        msg.pose.position.x = -4.1
+        msg.pose.position.y = -2.3
+        msg.pose.position.z = 0.2
+        msg.pose.orientation.x = 0.0
+        msg.pose.orientation.y = 0.0
+        msg.pose.orientation.z = 0.0
+        msg.pose.orientation.w = 0.0
+
+        rospy.wait_for_service('/gazebo/set_model_state')
+        try:
+            set_state = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)
+            resp = set_state(msg)
+        except rospy.ServiceException:
+            rospy.logerr("Service call to set_model_state failed")
+
+    def reset(self):
+
+        msg = ModelState()
+        msg.model_name = 'B1'
+        msg.pose.position.x = 5.5
+        msg.pose.position.y = 2.5
+        msg.pose.position.z = 0.2
+        msg.pose.orientation.x = 0.0
+        msg.pose.orientation.y = 0.0
+        msg.pose.orientation.z = -1.57
+        msg.pose.orientation.w = 0.0
+
+        rospy.wait_for_service('/gazebo/set_model_state')
+        try:
+            set_state = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)
+            resp = set_state(msg)
+        except rospy.ServiceException:
+            rospy.logerr("Service call to set_model_state failed")
 
 
     def image_callback(self, msg):

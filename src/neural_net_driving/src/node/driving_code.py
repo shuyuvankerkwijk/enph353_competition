@@ -22,14 +22,10 @@ class CNN_driving_class:
         self.bridge = CvBridge()
         self.model = None
         self.run = False
-        filename = os.path.join("..","..","..","..","training_for_driving/Road",'best_model.h5')
-        self.model_Road = tf.keras.models.load_model(filename)
-        filename = os.path.join("..","..","..","..","training_for_driving/Gravel",'best_model.h5')
-        self.model_Gravel = tf.keras.models.load_model(filename)
-        filename = os.path.join("..","..","..","..","training_for_driving/OffRoad",'best_model.h5')
-        self.model_OffRoad = tf.keras.models.load_model(filename)
-        filename = os.path.join("..","..","..","..","training_for_driving/ramp",'best_model.h5')
-        self.model_ramp = tf.keras.models.load_model(filename)
+        self.model_Road = tf.keras.models.load_model('/home/fizzer/ros_ws/training_for_driving/Road/best_model.h5')
+        self.model_Gravel = tf.keras.models.load_model('/home/fizzer/ros_ws/training_for_driving/Gravel/best_model.h5')
+        self.model_OffRoad = tf.keras.models.load_model('/home/fizzer/ros_ws/training_for_driving/OffRoad/best_model.h5')
+        self.model_ramp = tf.keras.models.load_model('/home/fizzer/ros_ws/training_for_driving/ramp/best_model.h5')
 
     def image_callback(self, msg):
         try:

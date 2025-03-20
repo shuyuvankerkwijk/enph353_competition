@@ -38,7 +38,7 @@ class writing_Images:
                 now_str = datetime.datetime.now().strftime("%Y%m%d_%H%M%S_%f")
                 filename = f"image_{now_str}_{self.track_section}_Lin_{self.lin:.2f}_Ang_{self.ang:.2f}.png"
 
-                filename = os.path.join("..","..","..","..","training_for_driving",filename)
+                filename ='/home/fizzer/ros_ws/training_for_driving/'+filename
 
                 save_image = cv2.resize(cv2_img, None, fx=0.5, fy=0.5, interpolation=cv2.INTER_LINEAR)
                 
