@@ -21,8 +21,8 @@
 		</include>
 		<!-- Add teleop_keyboard controller -->
 		<!--include file="$(find enph353_utils)/launch/desktop.launch"/-->
-		<include file="$(find image_collection)/src/launch/image_collection.launch"/>
-		<!-- <include file="$(find neural_net_driving)/src/launch/neural_net_driving.launch"/> -->
+		<!-- <include file="$(find image_collection)/src/launch/image_collection.launch"/> -->
+		<include file="$(find neural_net_driving)/src/launch/neural_net_driving.launch"/>
 	</group>
 
 </launch>

@@ -23,4 +23,9 @@
          name="Controller_code" 
          output="screen">
    </node>
+   <node pkg="neural_net_driving"
+         type="SIFT.py"
+         name="SIFT" 
+         output="screen">
+   </node>
 </launch>
