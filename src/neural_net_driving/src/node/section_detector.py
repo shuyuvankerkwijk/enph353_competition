@@ -7,104 +7,128 @@ from std_msgs.msg import String, Bool
 import cv2
 import numpy as np
 
-lower_pink = np.array([0,  0, 120])    # B=0, G=0, R=120
-upper_pink = np.array([100, 100, 255]) # B=100, G=100, R=255
+# ------------------------------------------------------------------------------
+#                                CONFIGURATION
+# ------------------------------------------------------------------------------
+LOWER_PINK_BOUNDS = np.array([240, 0, 240])  # Pink detection lower bound
+UPPER_PINK_BOUNDS = np.array([255, 10, 255]) # Pink detection upper bound
+TRANSITION_COOLDOWN_SEC = 5
 
-
+# ------------------------------------------------------------------------------
+#                     CLASS: MapSectionDetector
+# ------------------------------------------------------------------------------
 class MapSectionDetector:
+    """
+    Uses camera images to detect when the robot crosses a pink line on the ground,
+    transitioning to a new section (Road -> Gravel -> OffRoad -> ramp).
+    Publishes the current track section on /track_section.
+    """
 
     def __init__(self):
         self.bridge = CvBridge()
-        self.section = 'Road'
         self.pub_sec = rospy.Publisher('/track_section', String, queue_size=1)
-        self.last_transition = rospy.Time.now().to_sec()
-        self.transition_cooldown = 5
-        self.run = True
-        self.teleop = False
-        self.auto = False
+        self.pub_status = rospy.Publisher('/section_detector/status', String, queue_size=1)
+
+        # Default to 'Road'
+        self.section = 'Road'
+
+        # For rate-limiting section transitions
+        self.last_transition_time = rospy.Time.now().to_sec()
+        self.detection_active = True
+
+        # Publish status once a second
+        rospy.Timer(rospy.Duration(1.0), self.publish_status)
+
+    def publish_status(self, event):
+        """
+        Publishes the current detection-active state and which section we're in.
+        """
+        status_msg = String()
+        status_msg.data = f"section={self.section}, detection_active={self.detection_active}"
+        self.pub_status.publish(status_msg)
 
     def image_callback(self, msg):
         """
-        Receives an Image from ROS, determines what section of the map we are in!
-        For detecting what track section we are in please write it in a way agnostic to current infrastructure.
-        Right now it is used to label the saved imaged, in future, it will determine the driving model.
+        Receives camera images, checks the bottom region for pink color,
+        and if found (beyond a threshold) transitions to the next section
+        if enough cooldown time has passed.
         """
-        if self.run:
-            try:
-                img = self.bridge.imgmsg_to_cv2(msg, "bgr8")
-            except CvBridgeError:
-                return
-            
-            if rospy.Time.now().to_sec() - self.last_transition > self.transition_cooldown:
-                
-
-                h, w, _ = img.shape
-
-                crop_top = int(0.8 * h)
-                bottom_region = img[crop_top:, :]
-
-                lower_pink = np.array([240,  0, 240])    # B=0, G=0, R=120
-                upper_pink = np.array([255, 10, 255]) # B=100, G=100, R=255
-
-                # Create a mask of pixels that fall within our "pinkish" BGR range
-                pink_mask = cv2.inRange(bottom_region, lower_pink, upper_pink)
-
-                if np.mean(pink_mask) > 0.2:
-                    self.last_transition = rospy.Time.now().to_sec()
-                    if self.section == 'Road':
-                        self.section = 'Gravel'
-                    elif self.section == 'Gravel':
-                        self.section = 'OffRoad'
-                    elif self.section == 'OffRoad':
-                        self.section = 'ramp'
-                    
-            self.pub_sec.publish(self.section)
-
-    def reset(self, msg):
-        if msg.data == 'Void':
+        if not self.detection_active:
             return
-        elif msg.data == 'Reset':
+
+        try:
+            img_bgr = self.bridge.imgmsg_to_cv2(msg, "bgr8")
+        except CvBridgeError:
+            return
+
+        current_time = rospy.Time.now().to_sec()
+        if current_time - self.last_transition_time < TRANSITION_COOLDOWN_SEC:
+            # Too soon to detect a new transition
+            self.pub_sec.publish(self.section)
+            return
+
+        # Focus on the bottom ~20% of the image
+        height, width, _ = img_bgr.shape
+        crop_top_index = int(0.8 * height)
+        bottom_region = img_bgr[crop_top_index:, :]
+
+        # Pink mask
+        pink_mask = cv2.inRange(bottom_region, LOWER_PINK_BOUNDS, UPPER_PINK_BOUNDS)
+
+        if np.mean(pink_mask) > 0.2:
+            self.last_transition_time = current_time
+            if self.section == 'Road':
+                self.section = 'Gravel'
+            elif self.section == 'Gravel':
+                self.section = 'OffRoad'
+            elif self.section == 'OffRoad':
+                self.section = 'ramp'
+
+        self.pub_sec.publish(self.section)
+
+    def reset_callback(self, msg):
+        data = msg.data
+        if data == 'Void':
+            return
+
+        self.last_transition_time = rospy.Time.now().to_sec()
+        if data == 'Reset':
             self.section = 'Road'
-            self.last_transition = rospy.Time.now().to_sec()
-        elif msg.data == 'Gravel':
+        elif data == 'Gravel':
             self.section = 'Gravel'
-            self.last_transition = rospy.Time.now().to_sec()
-        elif msg.data == 'OffRoad':
+        elif data == 'OffRoad':
             self.section = 'OffRoad'
-            self.last_transition = rospy.Time.now().to_sec()
-        elif msg.data == 'ramp':
+        elif data == 'ramp':
             self.section = 'ramp'
-            self.last_transition = rospy.Time.now().to_sec()
 
+    def teleop_state_callback(self, msg):
+        teleop_enabled = msg.data
+        # detection_active stays true if either teleop or auto were ever true
+        self.detection_active = teleop_enabled or self.detection_active
 
-    def teleop_state(self, msg):
-        self.teleop = msg.data
-        self.run = self.teleop or self.auto
+    def auto_state_callback(self, msg):
+        auto_enabled = msg.data
+        self.detection_active = auto_enabled or self.detection_active
 
-    def auto_state(self, msg):
-        self.auto = msg.data
-        self.run = self.teleop or self.auto
+# ------------------------------------------------------------------------------
+#                              MAIN ROS NODE
+# ------------------------------------------------------------------------------
+def section_detection_node():
+    rospy.init_node('Section_detector')
 
-def image_subscriber():
-    rospy.init_node('Section_detector')  # Renamed for clarity
+    map_section_detector = MapSectionDetector()
 
-    data_saver = MapSectionDetector()
+    rospy.Subscriber('/B1/rrbot/camera1/image_raw', Image, map_section_detector.image_callback)
+    rospy.Subscriber('/reset', String, map_section_detector.reset_callback)
+    rospy.Subscriber('/teleop', Bool, map_section_detector.teleop_state_callback)
+    rospy.Subscriber('/auto', Bool, map_section_detector.auto_state_callback)
 
-    # Example publishers
-    rospy.Subscriber('/B1/rrbot/camera1/image_raw', Image, data_saver.image_callback)
-    rospy.Subscriber('/reset', String, data_saver.reset)
-    rospy.Subscriber('/teleop', Bool, data_saver.teleop_state)
-    rospy.Subscriber('/auto', Bool, data_saver.auto_state)
-    
-    # Give ROS some time to set up
     rospy.sleep(1)
     rospy.loginfo("section detection node initialized!")
     rospy.spin()
- 
-
 
 if __name__ == "__main__":
     try:
-        image_subscriber()
+        section_detection_node()
     except rospy.ROSInterruptException:
         pass

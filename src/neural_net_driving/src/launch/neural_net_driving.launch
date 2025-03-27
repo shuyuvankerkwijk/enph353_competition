@@ -28,4 +28,9 @@
          name="SIFT" 
          output="screen">
    </node>
+   <node pkg="neural_net_driving"
+         type="Dashboard.py"
+         name="Dashboard" 
+         output="screen">
+   </node>
 </launch>
