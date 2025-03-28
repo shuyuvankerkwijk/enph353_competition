@@ -7,7 +7,9 @@ from std_msgs.msg import Bool, String
 import cv2
 import numpy as np
 from collections import Counter
-from tensorflow import keras
+from neural_net_driving.msg import ImageWithID
+import re
+import difflib
 
 
 
@@ -19,20 +21,25 @@ class sift_class:
         self.section = None
         
         # adjustable parameters
-        self.blue_threshold = 0.55
+        self.blue_threshold_percentage = 1
         self.scale_image = 0.4
         self.scale_template = 0.4
         self.min_match_count = 20
+
+        # topics
+        self.pub_status = rospy.Publisher('/SIFT_node/status', String, queue_size=1)
+        self.pub_read = rospy.Publisher('/input_images', ImageWithID, queue_size=1000)
+        self.sub_read = rospy.Subscriber('/read_image_results', String, self.prediction_callback)
+        # rospy.Timer(rospy.Duration(1.0), self.publish_status)
         
         # setup object detection
         self.sift = cv2.SIFT_create()
         index_params = dict(algorithm=0, trees=5)
         search_params = dict()
         self.flann = cv2.FlannBasedMatcher(index_params, search_params)
-        self.template_img = cv2.imread("../include/template_full.png", cv2.IMREAD_GRAYSCALE)
+        self.template_img = cv2.imread("/home/fizzer/ros_ws/training_for_reading/template_full.png", cv2.IMREAD_GRAYSCALE)
         self.template_img_small = cv2.resize(self.template_img, None, fx=self.scale_template, fy=self.scale_template, interpolation=cv2.INTER_AREA)
         self.template_kp, self.template_des = self.sift.detectAndCompute(self.template_img_small, None)
-        self.model = keras.models.load_model("../include/model_run_4.h5")
 
         # empty objects for storing results
         self.size_reads = []
@@ -49,6 +56,10 @@ class sift_class:
         self.weapon_concensus = None
         self.bandit_reads = []
         self.bandit_concensus = None
+
+        self.sign_index = 0
+        self.top_words = []
+        self.bottom_words = []
 
     def blue_threshold(self, image):
         hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
@@ -81,11 +92,11 @@ class sift_class:
         thickness = 2
         binary_bgr = cv2.cvtColor(blue_mask, cv2.COLOR_GRAY2BGR)
         cv2.putText(binary_bgr, text, org, font, fontScale, color, thickness, cv2.LINE_AA)
-        cv2.imshow("feed", binary_bgr)
+        cv2.imshow("SIFT", binary_bgr)
         cv2.waitKey(1)
         
         # if percentage > 0.55%, process the image
-        if percentage_blue >= self.blue_threshold:
+        if percentage_blue >= self.blue_threshold_percentage:
             self.image_buffer.append(cv2_img)
 
     # TODO: implement this function. it has to write to one of the sign-read 
@@ -121,7 +132,7 @@ class sift_class:
                 warped_image = cv2.warpPerspective(image, H_S, (self.template_img.shape[1], self.template_img.shape[0]))
                     
             except Exception as e:
-                print(f"Error in SIFT or homography: {e}")
+                rospy.logdebug(f"Error in SIFT or homography: {e}")
                 return
                    
             '''2. Threshold and crop'''
@@ -136,9 +147,9 @@ class sift_class:
                 
                 # check if the warp was good and there is a complete border
                 if (mask_cleaned[10, 10] == mask_cleaned[10, -10] == mask_cleaned[-10, 10] == mask_cleaned[-10, -10] == 255):
-                    print("Border is complete")
+                    rospy.logdebug("Border is complete")
                 else:
-                    print("Border is incomplete. Continuing anyways")
+                    rospy.logdebug("Border is incomplete. Continuing anyways")
                 
                 # flood fill to get rid of the surrounding white frame
                 flood_filled = mask_cleaned.copy()
@@ -200,74 +211,154 @@ class sift_class:
                 cv2.waitKey(1)
                             
             except Exception as e:
-                print(f"Error in thresholding or cropping: {e}")
+                rospy.logdebug(f"Error in thresholding or cropping: {e}")
                 return
             
-            '''3. CNN classification'''
+            '''3. CNN classification -- publish to topic'''
             try:
-                def predict_batch(batch):
-                    batch_normalized = batch / 255.0  # shape: (N, H, W)
-                    batch_input = np.expand_dims(batch_normalized, axis=-1) # shape: (N, H, W, 1)
-                    batch_predictions = self.model.predict(batch_input)
-                    pred_indices = np.argmax(batch_predictions, axis=1)
-                    pred_letters = [chr(ord('A') + idx) for idx in pred_indices]
-                    return pred_letters
-                
-                top_predictions = predict_batch(top_half_crops)
-                bottom_predictions = predict_batch(bottom_half_crops)
-                
-                # plot the letters and predictions, can comment out if not needed
-                top_images_with_labels = []
-                for i in range(len(top_half_crops)):
-                    img = top_half_crops[i]
-                    img_bgr = cv2.cvtColor((img * 255).astype(np.uint8), cv2.COLOR_GRAY2BGR)
-                    cv2.putText(img_bgr, top_predictions[i], (10, 30), cv2.FONT_HERSHEY_SIMPLEX,
-                                1, (0, 255, 0), 2, cv2.LINE_AA)
-                    top_images_with_labels.append(img_bgr)
-                    
-                bottom_images_with_labels = []
-                for i in range(len(bottom_half_crops)):
-                    img = bottom_half_crops[i]
-                    img_bgr = cv2.cvtColor((img * 255).astype(np.uint8), cv2.COLOR_GRAY2BGR)
-                    cv2.putText(img_bgr, bottom_predictions[i], (10, 30), cv2.FONT_HERSHEY_SIMPLEX,
-                                1, (0, 255, 0), 2, cv2.LINE_AA)
-                    bottom_images_with_labels.append(img_bgr)
+                self.sign_index += 1
+                self.top_words.append(['*']*len(top_half_crops))
+                self.bottom_words.append(['*']*len(bottom_half_crops))
 
-                top_image = cv2.hconcat(top_images_with_labels)
-                bottom_image = cv2.hconcat(bottom_images_with_labels)
-                final_image = cv2.vconcat(top_image, bottom_image)
+                for i,image in enumerate(top_half_crops):
+                    image = image.astype(np.float32) / 255.0 #(H, W)
+                    ros_image = self.bridge.cv2_to_imgmsg(image, encoding='32FC1')
+                    msg = ImageWithID()
+                    msg.id = f"{self.sign_index}t{i}"
+                    msg.image = ros_image
+                    self.pub_read.publish(msg)
+                    rospy.loginfo(f"Published image ID: {msg.id}")
 
-                cv2.imshow("Predicted Letters", final_image)
-                cv2.waitKey(0)
-                cv2.destroyAllWindows()
-                
+                for i,image in enumerate(bottom_half_crops):
+                    image = image.astype(np.float32) / 255.0 #(H, W)
+                    ros_image = self.bridge.cv2_to_imgmsg(image, encoding='32FC1')
+                    msg = ImageWithID()
+                    msg.id = f"{self.sign_index}b{i}"
+                    msg.image = ros_image
+                    self.pub_read.publish(msg)
+                    rospy.loginfo(f"Published image ID: {msg.id}")
+
             except Exception as e:
-                print(f"Error in CNN: {e}")
+                rospy.logdebug(f"Error in CNN: {e}")
                 return
-            
-            '''4. Add to the correct list'''
-            
-            sign_title = "".join(top_predictions)
-            message = "".join(bottom_predictions)
 
-            if sign_title == "size":
-                self.size_reads.append(message)
-            elif sign_title == "crime":
-                self.crime_reads.append(message)
-            elif sign_title == "time":
-                self.time_reads.append(message)
-            elif sign_title == "place":
-                self.place_reads.append(message)
-            elif sign_title == "motive":
-                self.motive_reads.append(message)
-            elif sign_title == "weapon":
-                self.weapon_reads.append(message)
-            elif sign_title == "bandit":
-                self.bandit_reads.append(message)
-            else:
-                print("Sign title not recognized")
+    
+    def parse_result_string(self, result_str):
+        """
+        Parses strings like: "id: 42t7, prediction: 26"
+        Returns:
+            sign_counter (int),
+            type_char (str),
+            i (int),
+            prediction (int)
+        """
+        pattern = r'^id:\s*(\d+)([a-zA-Z])(\d+),\s*prediction:\s*(-?\d+)$'
+        match = re.match(pattern, result_str.strip())
+        if match:
+            sign_index = int(match.group(1))
+            type_char = match.group(2)
+            letter_index = int(match.group(3))
+            prediction = int(match.group(4))
+            return sign_index, type_char, letter_index, prediction
+        else:
+            return None, None, None, None
+        
+    
+    def find_closest_match(self, word, category_list):
+        """
+        Finds the closest word in category_list to `word`
+        using Levenshtein-like edit distance.
 
-        return
+        Returns:
+            best_match: str — closest match
+            distance: int — number of characters different
+        """
+        def edit_distance(a, b):
+            # Dynamic programming Levenshtein distance
+            dp = [[0]*(len(b)+1) for _ in range(len(a)+1)]
+
+            for i in range(len(a)+1):
+                for j in range(len(b)+1):
+                    if i == 0:
+                        dp[i][j] = j
+                    elif j == 0:
+                        dp[i][j] = i
+                    elif a[i-1] == b[j-1]:
+                        dp[i][j] = dp[i-1][j-1]
+                    else:
+                        dp[i][j] = 1 + min(
+                            dp[i-1][j],    # deletion
+                            dp[i][j-1],    # insertion
+                            dp[i-1][j-1]   # substitution
+                        )
+            return dp[len(a)][len(b)]
+
+        best_match = None
+        best_distance = float('inf')
+
+        for category in category_list:
+            dist = edit_distance(word.upper(), category.upper())
+            if dist < best_distance:
+                best_match = category
+                best_distance = dist
+
+        return best_match, best_distance
+
+
+                    
+    def prediction_callback(self, result_string):
+
+        sign_index, type_char, letter_index, prediction = self.parse_result_string(result_string)
+
+        prediction = chr(ord('A') + prediction) # convert to letter
+
+        if type_char == 't':
+            self.top_words[sign_index][letter_index] = prediction
+
+        elif type_char == 'b':
+            self.bottom_words[sign_index][letter_index] = prediction
+
+        else:
+            rospy.logdebug(f"Error in msg id: {sign_index}{type_char}{letter_index}{prediction}")
+        
+        top_word = "".join(self.top_words[sign_index])
+        bottom_word = "".join(self.bottom_words[sign_index])
+        if ("*" not in top_word) and ("*" not in bottom_word):
+
+            category, match_distance = self.find_closest_match(top_word, ['SIZE','VICTIM','CRIME','TIME','PLACE','MOTIVE','WEAPON','BANDIT'])
+            rospy.loginfo(f"top_word: {top_word}, matched_word: {category}, match_distance: {match_distance}")
+            if match_distance <= 2:
+
+                if category == "SIZE":
+                    self.size_reads.append(bottom_word)
+                elif category == "CRIME":
+                    self.crime_reads.append(bottom_word)
+                elif category == "TIME":
+                    self.time_reads.append(bottom_word)
+                elif category == "PLACE":
+                    self.place_reads.append(bottom_word)
+                elif category == "MOTIVE":
+                    self.motive_reads.append(bottom_word)
+                elif category == "WEAPON":
+                    self.weapon_reads.append(bottom_word)
+                elif category == "BANDIT":
+                    self.bandit_reads.append(bottom_word)
+                else:
+                    rospy.logdebug("Sign title not recognized")
+                
+                rospy.loginfo(f"Added {bottom_word} to {category}")
+                self.pub_status.publish(String("Category: " + category + " Message: " + bottom_word))
+
+    
+    # def publish_status(self, event):
+    #     """
+    #     Periodically publish how many images are in buffer, plus the current section.
+    #     """
+    #     status_str = (
+    #         f"section={self.section}, "
+    #         f"image_buffer_len={len(self.image_buffer)}"
+    #     )
+    #     self.pub_status.publish(String(data=status_str))
 
     def track_section_callback(self, msg):
         self.section = msg.data
@@ -286,6 +377,9 @@ class sift_class:
             result += most_common
 
         return result.strip()  # strip padding
+    
+    def results(self, msg):
+        return
 
 
 def image_subscriber():
@@ -296,6 +390,7 @@ def image_subscriber():
     # Example publishers
     rospy.Subscriber('/B1/rrbot/camera1/image_raw', Image, sift.image_callback)
     rospy.Subscriber('/track_section', String, sift.track_section_callback)
+    rospy.Subscriber('/read_image_results', String, sift.results)
 
     # Give ROS some time to set up
     rospy.sleep(1)
@@ -304,7 +399,7 @@ def image_subscriber():
 
     rate = rospy.Rate(5)  # 5Hz 
     while not rospy.is_shutdown():
-        sift.process_a_image()
+        # sift.process_a_image()
         rate.sleep()
  
 

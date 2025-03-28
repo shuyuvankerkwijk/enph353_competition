@@ -28,8 +28,11 @@ def loadCrimesProfileCompetition():
     response = requests.get(URL)
 
     raw = response.text.split('\n')
-    key_list   = raw[0].split(',')
-    value_list = raw[1].split(',')
+    # key_list   = raw[0].split(',')
+    # value_list = raw[1].split(',')
+    key_list   = ['SIZE','VICTIM','CRIME','TIME','PLACE','MOTIVE','WEAPON','BANDIT']
+    value_list = ['KXQZYJV','KXQZYJV','KXQZYJV','KXQZYJV','KXQZYJV','KXQZYJV','KXQZYJV','KXQZYJV']
+
 
     clues = {}
 

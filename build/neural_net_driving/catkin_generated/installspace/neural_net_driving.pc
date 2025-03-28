@@ -3,6 +3,6 @@ prefix=/home/fizzer/ros_ws/install
 Name: neural_net_driving
 Description: Description of neural_net_driving
 Version: 0.0.0
-Cflags: 
+Cflags: -I${prefix}/include
 Libs: -L${prefix}/lib 
 Requires: 

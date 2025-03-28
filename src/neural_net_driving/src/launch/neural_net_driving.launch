@@ -33,4 +33,9 @@
          name="Dashboard" 
          output="screen">
    </node>
+   <node pkg="neural_net_driving"
+         type="Neural_Network_Node.py"
+         name="Neural_Network_Node" 
+         output="screen">
+   </node>
 </launch>

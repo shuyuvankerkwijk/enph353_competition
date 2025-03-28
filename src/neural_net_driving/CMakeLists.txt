@@ -9,6 +9,32 @@ project(neural_net_driving)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   rospy
+  std_msgs
+  sensor_msgs
+  message_generation
+)
+
+add_message_files(
+  FILES
+  ImageWithID.msg
+)
+
+add_service_files(
+  FILES
+  ImageProcessor.srv
+)
+
+generate_messages(
+  DEPENDENCIES
+  std_msgs
+  sensor_msgs
+)
+
+catkin_package(
+  CATKIN_DEPENDS
+    message_runtime
+    sensor_msgs
+    std_msgs
 )
 
 ## System dependencies are found with CMake's conventions

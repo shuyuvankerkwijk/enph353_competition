@@ -195,44 +195,39 @@ clean: 2024_competition/enph353/enph353_gazebo/clean
 2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_geneus.dir/clean
 2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_eus.dir/clean
 2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_gencpp.dir/clean
-2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_genpy.dir/clean
-2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_py.dir/clean
-2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir/clean
-2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/clean
 2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_py.dir/clean
-2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_cpp.dir/clean
-2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/clean
-2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_ros_gencfg.dir/clean
-2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/clean
-2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean
-2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean
 2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_lisp.dir/clean
 2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/clean
+2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_cpp.dir/clean
+2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/clean
+2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_ros_gencfg.dir/clean
+2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/clean
+2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/clean
 2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_cpp.dir/clean
 2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_eus.dir/clean
-2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean
-2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/clean
-2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/clean
-2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean
 2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_lisp.dir/clean
 2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/clean
-2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir/clean
-2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/clean
+2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir/clean
+2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/clean
 2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_eus.dir/clean
 2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_gencfg.dir/clean
 2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_nodejs.dir/clean
 2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_cpp.dir/clean
 2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_eus.dir/clean
-2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/clean
-2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/clean
-2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_nodejs.dir/clean
 2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/clean
 2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_lisp.dir/clean
+2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/clean
+2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_nodejs.dir/clean
+2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/clean
+2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_genpy.dir/clean
+2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_py.dir/clean
+2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/clean
+2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir/clean
 2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_SubmitPlate.dir/clean
-2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_GetLegalPlates.dir/clean
 2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_eus.dir/clean
 2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_cpp.dir/clean
 2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_py.dir/clean
+2024_competition/enph353/enph353_gazebo/clean: 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_GetLegalPlates.dir/clean
 
 .PHONY : 2024_competition/enph353/enph353_gazebo/clean
 
@@ -394,7 +389,7 @@ image_collection/clean:
 # Directory level rules for directory neural_net_driving
 
 # Recursive "all" directory target.
-neural_net_driving/all:
+neural_net_driving/all: neural_net_driving/CMakeFiles/neural_net_driving_generate_messages.dir/all
 
 .PHONY : neural_net_driving/all
 
@@ -404,7 +399,24 @@ neural_net_driving/preinstall:
 .PHONY : neural_net_driving/preinstall
 
 # Recursive "clean" directory target.
-neural_net_driving/clean:
+neural_net_driving/clean: neural_net_driving/CMakeFiles/neural_net_driving_gennodejs.dir/clean
+neural_net_driving/clean: neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_nodejs.dir/clean
+neural_net_driving/clean: neural_net_driving/CMakeFiles/neural_net_driving_genlisp.dir/clean
+neural_net_driving/clean: neural_net_driving/CMakeFiles/neural_net_driving_genpy.dir/clean
+neural_net_driving/clean: neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean
+neural_net_driving/clean: neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean
+neural_net_driving/clean: neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/clean
+neural_net_driving/clean: neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean
+neural_net_driving/clean: neural_net_driving/CMakeFiles/neural_net_driving_gencpp.dir/clean
+neural_net_driving/clean: neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageProcessor.dir/clean
+neural_net_driving/clean: neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean
+neural_net_driving/clean: neural_net_driving/CMakeFiles/neural_net_driving_geneus.dir/clean
+neural_net_driving/clean: neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_lisp.dir/clean
+neural_net_driving/clean: neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_py.dir/clean
+neural_net_driving/clean: neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageWithID.dir/clean
+neural_net_driving/clean: neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_cpp.dir/clean
+neural_net_driving/clean: neural_net_driving/CMakeFiles/neural_net_driving_generate_messages.dir/clean
+neural_net_driving/clean: neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_eus.dir/clean
 
 .PHONY : neural_net_driving/clean
 
@@ -1396,6 +1408,511 @@ enph353_utils_generate_messages_py: 2024_competition/enph353/enph353_utils/CMake
 .PHONY : 2024_competition/enph353/enph353_utils/CMakeFiles/enph353_utils_generate_messages_py.dir/clean
 
 #=============================================================================
+# Target rules for target neural_net_driving/CMakeFiles/neural_net_driving_gennodejs.dir
+
+# All Build rule for target.
+neural_net_driving/CMakeFiles/neural_net_driving_gennodejs.dir/all: neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_nodejs.dir/all
+	$(MAKE) -f neural_net_driving/CMakeFiles/neural_net_driving_gennodejs.dir/build.make neural_net_driving/CMakeFiles/neural_net_driving_gennodejs.dir/depend
+	$(MAKE) -f neural_net_driving/CMakeFiles/neural_net_driving_gennodejs.dir/build.make neural_net_driving/CMakeFiles/neural_net_driving_gennodejs.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target neural_net_driving_gennodejs"
+.PHONY : neural_net_driving/CMakeFiles/neural_net_driving_gennodejs.dir/all
+
+# Build rule for subdir invocation for target.
+neural_net_driving/CMakeFiles/neural_net_driving_gennodejs.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 neural_net_driving/CMakeFiles/neural_net_driving_gennodejs.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+.PHONY : neural_net_driving/CMakeFiles/neural_net_driving_gennodejs.dir/rule
+
+# Convenience name for target.
+neural_net_driving_gennodejs: neural_net_driving/CMakeFiles/neural_net_driving_gennodejs.dir/rule
+
+.PHONY : neural_net_driving_gennodejs
+
+# clean rule for target.
+neural_net_driving/CMakeFiles/neural_net_driving_gennodejs.dir/clean:
+	$(MAKE) -f neural_net_driving/CMakeFiles/neural_net_driving_gennodejs.dir/build.make neural_net_driving/CMakeFiles/neural_net_driving_gennodejs.dir/clean
+.PHONY : neural_net_driving/CMakeFiles/neural_net_driving_gennodejs.dir/clean
+
+#=============================================================================
+# Target rules for target neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_nodejs.dir
+
+# All Build rule for target.
+neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_nodejs.dir/all: 2024_competition/enph353/enph353_utils/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
+neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_nodejs.dir/all: neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/all
+neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_nodejs.dir/all: neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageProcessor.dir/all
+neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_nodejs.dir/all: neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageWithID.dir/all
+	$(MAKE) -f neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_nodejs.dir/build.make neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_nodejs.dir/depend
+	$(MAKE) -f neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_nodejs.dir/build.make neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_nodejs.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num=31,32 "Built target neural_net_driving_generate_messages_nodejs"
+.PHONY : neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_nodejs.dir/all
+
+# Build rule for subdir invocation for target.
+neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_nodejs.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_nodejs.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+.PHONY : neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+neural_net_driving_generate_messages_nodejs: neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_nodejs.dir/rule
+
+.PHONY : neural_net_driving_generate_messages_nodejs
+
+# clean rule for target.
+neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_nodejs.dir/clean:
+	$(MAKE) -f neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_nodejs.dir/build.make neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_nodejs.dir/clean
+.PHONY : neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_nodejs.dir/clean
+
+#=============================================================================
+# Target rules for target neural_net_driving/CMakeFiles/neural_net_driving_genlisp.dir
+
+# All Build rule for target.
+neural_net_driving/CMakeFiles/neural_net_driving_genlisp.dir/all: neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_lisp.dir/all
+	$(MAKE) -f neural_net_driving/CMakeFiles/neural_net_driving_genlisp.dir/build.make neural_net_driving/CMakeFiles/neural_net_driving_genlisp.dir/depend
+	$(MAKE) -f neural_net_driving/CMakeFiles/neural_net_driving_genlisp.dir/build.make neural_net_driving/CMakeFiles/neural_net_driving_genlisp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target neural_net_driving_genlisp"
+.PHONY : neural_net_driving/CMakeFiles/neural_net_driving_genlisp.dir/all
+
+# Build rule for subdir invocation for target.
+neural_net_driving/CMakeFiles/neural_net_driving_genlisp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 neural_net_driving/CMakeFiles/neural_net_driving_genlisp.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+.PHONY : neural_net_driving/CMakeFiles/neural_net_driving_genlisp.dir/rule
+
+# Convenience name for target.
+neural_net_driving_genlisp: neural_net_driving/CMakeFiles/neural_net_driving_genlisp.dir/rule
+
+.PHONY : neural_net_driving_genlisp
+
+# clean rule for target.
+neural_net_driving/CMakeFiles/neural_net_driving_genlisp.dir/clean:
+	$(MAKE) -f neural_net_driving/CMakeFiles/neural_net_driving_genlisp.dir/build.make neural_net_driving/CMakeFiles/neural_net_driving_genlisp.dir/clean
+.PHONY : neural_net_driving/CMakeFiles/neural_net_driving_genlisp.dir/clean
+
+#=============================================================================
+# Target rules for target neural_net_driving/CMakeFiles/neural_net_driving_genpy.dir
+
+# All Build rule for target.
+neural_net_driving/CMakeFiles/neural_net_driving_genpy.dir/all: neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_py.dir/all
+	$(MAKE) -f neural_net_driving/CMakeFiles/neural_net_driving_genpy.dir/build.make neural_net_driving/CMakeFiles/neural_net_driving_genpy.dir/depend
+	$(MAKE) -f neural_net_driving/CMakeFiles/neural_net_driving_genpy.dir/build.make neural_net_driving/CMakeFiles/neural_net_driving_genpy.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target neural_net_driving_genpy"
+.PHONY : neural_net_driving/CMakeFiles/neural_net_driving_genpy.dir/all
+
+# Build rule for subdir invocation for target.
+neural_net_driving/CMakeFiles/neural_net_driving_genpy.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 4
+	$(MAKE) -f CMakeFiles/Makefile2 neural_net_driving/CMakeFiles/neural_net_driving_genpy.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+.PHONY : neural_net_driving/CMakeFiles/neural_net_driving_genpy.dir/rule
+
+# Convenience name for target.
+neural_net_driving_genpy: neural_net_driving/CMakeFiles/neural_net_driving_genpy.dir/rule
+
+.PHONY : neural_net_driving_genpy
+
+# clean rule for target.
+neural_net_driving/CMakeFiles/neural_net_driving_genpy.dir/clean:
+	$(MAKE) -f neural_net_driving/CMakeFiles/neural_net_driving_genpy.dir/build.make neural_net_driving/CMakeFiles/neural_net_driving_genpy.dir/clean
+.PHONY : neural_net_driving/CMakeFiles/neural_net_driving_genpy.dir/clean
+
+#=============================================================================
+# Target rules for target neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_cpp.dir
+
+# All Build rule for target.
+neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/all:
+	$(MAKE) -f neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/depend
+	$(MAKE) -f neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target sensor_msgs_generate_messages_cpp"
+.PHONY : neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/all
+
+# Build rule for subdir invocation for target.
+neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+.PHONY : neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+sensor_msgs_generate_messages_cpp: neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : sensor_msgs_generate_messages_cpp
+
+# clean rule for target.
+neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean:
+	$(MAKE) -f neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean
+.PHONY : neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean
+
+#=============================================================================
+# Target rules for target neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_lisp.dir
+
+# All Build rule for target.
+neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/all:
+	$(MAKE) -f neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/depend
+	$(MAKE) -f neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target sensor_msgs_generate_messages_lisp"
+.PHONY : neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/all
+
+# Build rule for subdir invocation for target.
+neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+.PHONY : neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+sensor_msgs_generate_messages_lisp: neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : sensor_msgs_generate_messages_lisp
+
+# clean rule for target.
+neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean:
+	$(MAKE) -f neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean
+.PHONY : neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean
+
+#=============================================================================
+# Target rules for target neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir
+
+# All Build rule for target.
+neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/all:
+	$(MAKE) -f neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/depend
+	$(MAKE) -f neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target sensor_msgs_generate_messages_nodejs"
+.PHONY : neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/all
+
+# Build rule for subdir invocation for target.
+neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+.PHONY : neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+sensor_msgs_generate_messages_nodejs: neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : sensor_msgs_generate_messages_nodejs
+
+# clean rule for target.
+neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/clean:
+	$(MAKE) -f neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/clean
+.PHONY : neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/clean
+
+#=============================================================================
+# Target rules for target neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_py.dir
+
+# All Build rule for target.
+neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_py.dir/all:
+	$(MAKE) -f neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_py.dir/depend
+	$(MAKE) -f neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_py.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target sensor_msgs_generate_messages_py"
+.PHONY : neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_py.dir/all
+
+# Build rule for subdir invocation for target.
+neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_py.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+.PHONY : neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+sensor_msgs_generate_messages_py: neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
+
+.PHONY : sensor_msgs_generate_messages_py
+
+# clean rule for target.
+neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean:
+	$(MAKE) -f neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean
+.PHONY : neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean
+
+#=============================================================================
+# Target rules for target neural_net_driving/CMakeFiles/neural_net_driving_gencpp.dir
+
+# All Build rule for target.
+neural_net_driving/CMakeFiles/neural_net_driving_gencpp.dir/all: neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_cpp.dir/all
+	$(MAKE) -f neural_net_driving/CMakeFiles/neural_net_driving_gencpp.dir/build.make neural_net_driving/CMakeFiles/neural_net_driving_gencpp.dir/depend
+	$(MAKE) -f neural_net_driving/CMakeFiles/neural_net_driving_gencpp.dir/build.make neural_net_driving/CMakeFiles/neural_net_driving_gencpp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target neural_net_driving_gencpp"
+.PHONY : neural_net_driving/CMakeFiles/neural_net_driving_gencpp.dir/all
+
+# Build rule for subdir invocation for target.
+neural_net_driving/CMakeFiles/neural_net_driving_gencpp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 neural_net_driving/CMakeFiles/neural_net_driving_gencpp.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+.PHONY : neural_net_driving/CMakeFiles/neural_net_driving_gencpp.dir/rule
+
+# Convenience name for target.
+neural_net_driving_gencpp: neural_net_driving/CMakeFiles/neural_net_driving_gencpp.dir/rule
+
+.PHONY : neural_net_driving_gencpp
+
+# clean rule for target.
+neural_net_driving/CMakeFiles/neural_net_driving_gencpp.dir/clean:
+	$(MAKE) -f neural_net_driving/CMakeFiles/neural_net_driving_gencpp.dir/build.make neural_net_driving/CMakeFiles/neural_net_driving_gencpp.dir/clean
+.PHONY : neural_net_driving/CMakeFiles/neural_net_driving_gencpp.dir/clean
+
+#=============================================================================
+# Target rules for target neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageProcessor.dir
+
+# All Build rule for target.
+neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageProcessor.dir/all:
+	$(MAKE) -f neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageProcessor.dir/build.make neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageProcessor.dir/depend
+	$(MAKE) -f neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageProcessor.dir/build.make neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageProcessor.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target _neural_net_driving_generate_messages_check_deps_ImageProcessor"
+.PHONY : neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageProcessor.dir/all
+
+# Build rule for subdir invocation for target.
+neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageProcessor.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageProcessor.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+.PHONY : neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageProcessor.dir/rule
+
+# Convenience name for target.
+_neural_net_driving_generate_messages_check_deps_ImageProcessor: neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageProcessor.dir/rule
+
+.PHONY : _neural_net_driving_generate_messages_check_deps_ImageProcessor
+
+# clean rule for target.
+neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageProcessor.dir/clean:
+	$(MAKE) -f neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageProcessor.dir/build.make neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageProcessor.dir/clean
+.PHONY : neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageProcessor.dir/clean
+
+#=============================================================================
+# Target rules for target neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_eus.dir
+
+# All Build rule for target.
+neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_eus.dir/all:
+	$(MAKE) -f neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_eus.dir/depend
+	$(MAKE) -f neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target sensor_msgs_generate_messages_eus"
+.PHONY : neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_eus.dir/all
+
+# Build rule for subdir invocation for target.
+neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_eus.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+.PHONY : neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+sensor_msgs_generate_messages_eus: neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
+
+.PHONY : sensor_msgs_generate_messages_eus
+
+# clean rule for target.
+neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean:
+	$(MAKE) -f neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean
+.PHONY : neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean
+
+#=============================================================================
+# Target rules for target neural_net_driving/CMakeFiles/neural_net_driving_geneus.dir
+
+# All Build rule for target.
+neural_net_driving/CMakeFiles/neural_net_driving_geneus.dir/all: neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_eus.dir/all
+	$(MAKE) -f neural_net_driving/CMakeFiles/neural_net_driving_geneus.dir/build.make neural_net_driving/CMakeFiles/neural_net_driving_geneus.dir/depend
+	$(MAKE) -f neural_net_driving/CMakeFiles/neural_net_driving_geneus.dir/build.make neural_net_driving/CMakeFiles/neural_net_driving_geneus.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target neural_net_driving_geneus"
+.PHONY : neural_net_driving/CMakeFiles/neural_net_driving_geneus.dir/all
+
+# Build rule for subdir invocation for target.
+neural_net_driving/CMakeFiles/neural_net_driving_geneus.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 3
+	$(MAKE) -f CMakeFiles/Makefile2 neural_net_driving/CMakeFiles/neural_net_driving_geneus.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+.PHONY : neural_net_driving/CMakeFiles/neural_net_driving_geneus.dir/rule
+
+# Convenience name for target.
+neural_net_driving_geneus: neural_net_driving/CMakeFiles/neural_net_driving_geneus.dir/rule
+
+.PHONY : neural_net_driving_geneus
+
+# clean rule for target.
+neural_net_driving/CMakeFiles/neural_net_driving_geneus.dir/clean:
+	$(MAKE) -f neural_net_driving/CMakeFiles/neural_net_driving_geneus.dir/build.make neural_net_driving/CMakeFiles/neural_net_driving_geneus.dir/clean
+.PHONY : neural_net_driving/CMakeFiles/neural_net_driving_geneus.dir/clean
+
+#=============================================================================
+# Target rules for target neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_lisp.dir
+
+# All Build rule for target.
+neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_lisp.dir/all: 2024_competition/enph353/enph353_utils/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
+neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_lisp.dir/all: neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/all
+neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_lisp.dir/all: neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageProcessor.dir/all
+neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_lisp.dir/all: neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageWithID.dir/all
+	$(MAKE) -f neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_lisp.dir/build.make neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_lisp.dir/depend
+	$(MAKE) -f neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_lisp.dir/build.make neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_lisp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num=29,30 "Built target neural_net_driving_generate_messages_lisp"
+.PHONY : neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_lisp.dir/all
+
+# Build rule for subdir invocation for target.
+neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_lisp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_lisp.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+.PHONY : neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+neural_net_driving_generate_messages_lisp: neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_lisp.dir/rule
+
+.PHONY : neural_net_driving_generate_messages_lisp
+
+# clean rule for target.
+neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_lisp.dir/clean:
+	$(MAKE) -f neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_lisp.dir/build.make neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_lisp.dir/clean
+.PHONY : neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_lisp.dir/clean
+
+#=============================================================================
+# Target rules for target neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_py.dir
+
+# All Build rule for target.
+neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_py.dir/all: 2024_competition/enph353/enph353_utils/CMakeFiles/std_msgs_generate_messages_py.dir/all
+neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_py.dir/all: neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_py.dir/all
+neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_py.dir/all: neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageProcessor.dir/all
+neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_py.dir/all: neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageWithID.dir/all
+	$(MAKE) -f neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_py.dir/build.make neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_py.dir/depend
+	$(MAKE) -f neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_py.dir/build.make neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_py.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num=33,34,35,36 "Built target neural_net_driving_generate_messages_py"
+.PHONY : neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_py.dir/all
+
+# Build rule for subdir invocation for target.
+neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_py.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 4
+	$(MAKE) -f CMakeFiles/Makefile2 neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_py.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+.PHONY : neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_py.dir/rule
+
+# Convenience name for target.
+neural_net_driving_generate_messages_py: neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_py.dir/rule
+
+.PHONY : neural_net_driving_generate_messages_py
+
+# clean rule for target.
+neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_py.dir/clean:
+	$(MAKE) -f neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_py.dir/build.make neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_py.dir/clean
+.PHONY : neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_py.dir/clean
+
+#=============================================================================
+# Target rules for target neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageWithID.dir
+
+# All Build rule for target.
+neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageWithID.dir/all:
+	$(MAKE) -f neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageWithID.dir/build.make neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageWithID.dir/depend
+	$(MAKE) -f neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageWithID.dir/build.make neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageWithID.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target _neural_net_driving_generate_messages_check_deps_ImageWithID"
+.PHONY : neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageWithID.dir/all
+
+# Build rule for subdir invocation for target.
+neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageWithID.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageWithID.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+.PHONY : neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageWithID.dir/rule
+
+# Convenience name for target.
+_neural_net_driving_generate_messages_check_deps_ImageWithID: neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageWithID.dir/rule
+
+.PHONY : _neural_net_driving_generate_messages_check_deps_ImageWithID
+
+# clean rule for target.
+neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageWithID.dir/clean:
+	$(MAKE) -f neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageWithID.dir/build.make neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageWithID.dir/clean
+.PHONY : neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageWithID.dir/clean
+
+#=============================================================================
+# Target rules for target neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_cpp.dir
+
+# All Build rule for target.
+neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_cpp.dir/all: 2024_competition/enph353/enph353_utils/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
+neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_cpp.dir/all: neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/all
+neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_cpp.dir/all: neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageProcessor.dir/all
+neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_cpp.dir/all: neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageWithID.dir/all
+	$(MAKE) -f neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_cpp.dir/build.make neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_cpp.dir/depend
+	$(MAKE) -f neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_cpp.dir/build.make neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_cpp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num=24,25 "Built target neural_net_driving_generate_messages_cpp"
+.PHONY : neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_cpp.dir/all
+
+# Build rule for subdir invocation for target.
+neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_cpp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_cpp.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+.PHONY : neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+neural_net_driving_generate_messages_cpp: neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_cpp.dir/rule
+
+.PHONY : neural_net_driving_generate_messages_cpp
+
+# clean rule for target.
+neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_cpp.dir/clean:
+	$(MAKE) -f neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_cpp.dir/build.make neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_cpp.dir/clean
+.PHONY : neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_cpp.dir/clean
+
+#=============================================================================
+# Target rules for target neural_net_driving/CMakeFiles/neural_net_driving_generate_messages.dir
+
+# All Build rule for target.
+neural_net_driving/CMakeFiles/neural_net_driving_generate_messages.dir/all: neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_nodejs.dir/all
+neural_net_driving/CMakeFiles/neural_net_driving_generate_messages.dir/all: neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_lisp.dir/all
+neural_net_driving/CMakeFiles/neural_net_driving_generate_messages.dir/all: neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_py.dir/all
+neural_net_driving/CMakeFiles/neural_net_driving_generate_messages.dir/all: neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_cpp.dir/all
+neural_net_driving/CMakeFiles/neural_net_driving_generate_messages.dir/all: neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_eus.dir/all
+	$(MAKE) -f neural_net_driving/CMakeFiles/neural_net_driving_generate_messages.dir/build.make neural_net_driving/CMakeFiles/neural_net_driving_generate_messages.dir/depend
+	$(MAKE) -f neural_net_driving/CMakeFiles/neural_net_driving_generate_messages.dir/build.make neural_net_driving/CMakeFiles/neural_net_driving_generate_messages.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target neural_net_driving_generate_messages"
+.PHONY : neural_net_driving/CMakeFiles/neural_net_driving_generate_messages.dir/all
+
+# Build rule for subdir invocation for target.
+neural_net_driving/CMakeFiles/neural_net_driving_generate_messages.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 13
+	$(MAKE) -f CMakeFiles/Makefile2 neural_net_driving/CMakeFiles/neural_net_driving_generate_messages.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+.PHONY : neural_net_driving/CMakeFiles/neural_net_driving_generate_messages.dir/rule
+
+# Convenience name for target.
+neural_net_driving_generate_messages: neural_net_driving/CMakeFiles/neural_net_driving_generate_messages.dir/rule
+
+.PHONY : neural_net_driving_generate_messages
+
+# clean rule for target.
+neural_net_driving/CMakeFiles/neural_net_driving_generate_messages.dir/clean:
+	$(MAKE) -f neural_net_driving/CMakeFiles/neural_net_driving_generate_messages.dir/build.make neural_net_driving/CMakeFiles/neural_net_driving_generate_messages.dir/clean
+.PHONY : neural_net_driving/CMakeFiles/neural_net_driving_generate_messages.dir/clean
+
+#=============================================================================
+# Target rules for target neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_eus.dir
+
+# All Build rule for target.
+neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_eus.dir/all: 2024_competition/enph353/enph353_utils/CMakeFiles/std_msgs_generate_messages_eus.dir/all
+neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_eus.dir/all: neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageProcessor.dir/all
+neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_eus.dir/all: neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_eus.dir/all
+neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_eus.dir/all: neural_net_driving/CMakeFiles/_neural_net_driving_generate_messages_check_deps_ImageWithID.dir/all
+	$(MAKE) -f neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_eus.dir/build.make neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_eus.dir/depend
+	$(MAKE) -f neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_eus.dir/build.make neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_eus.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num=26,27,28 "Built target neural_net_driving_generate_messages_eus"
+.PHONY : neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_eus.dir/all
+
+# Build rule for subdir invocation for target.
+neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_eus.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 3
+	$(MAKE) -f CMakeFiles/Makefile2 neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_eus.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+.PHONY : neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+neural_net_driving_generate_messages_eus: neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_eus.dir/rule
+
+.PHONY : neural_net_driving_generate_messages_eus
+
+# clean rule for target.
+neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_eus.dir/clean:
+	$(MAKE) -f neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_eus.dir/build.make neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_eus.dir/clean
+.PHONY : neural_net_driving/CMakeFiles/neural_net_driving_generate_messages_eus.dir/clean
+
+#=============================================================================
 # Target rules for target 2024_competition/adeept_awr/adeept_awr_gazebo/CMakeFiles/actionlib_generate_messages_nodejs.dir
 
 # All Build rule for target.
@@ -1994,7 +2511,7 @@ enph353_gazebo_gennodejs: 2024_competition/enph353/enph353_gazebo/CMakeFiles/enp
 
 # All Build rule for target.
 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_nodejs.dir/all: 2024_competition/enph353/enph353_utils/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
-2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_nodejs.dir/all: 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/all
+2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_nodejs.dir/all: neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/all
 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_nodejs.dir/all: 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_SubmitPlate.dir/all
 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_nodejs.dir/all: 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_GetLegalPlates.dir/all
 	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_nodejs.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_nodejs.dir/depend
@@ -2051,7 +2568,7 @@ enph353_gazebo_genlisp: 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph3
 
 # All Build rule for target.
 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_lisp.dir/all: 2024_competition/enph353/enph353_utils/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
-2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_lisp.dir/all: 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/all
+2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_lisp.dir/all: neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/all
 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_lisp.dir/all: 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_SubmitPlate.dir/all
 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_lisp.dir/all: 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_GetLegalPlates.dir/all
 	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_lisp.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_lisp.dir/depend
@@ -2108,7 +2625,7 @@ enph353_gazebo_geneus: 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph35
 
 # All Build rule for target.
 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_eus.dir/all: 2024_competition/enph353/enph353_utils/CMakeFiles/std_msgs_generate_messages_eus.dir/all
-2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_eus.dir/all: 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_eus.dir/all
+2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_eus.dir/all: neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_eus.dir/all
 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_eus.dir/all: 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_SubmitPlate.dir/all
 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_eus.dir/all: 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_GetLegalPlates.dir/all
 	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_eus.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_eus.dir/depend
@@ -2161,117 +2678,6 @@ enph353_gazebo_gencpp: 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph35
 .PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_gencpp.dir/clean
 
 #=============================================================================
-# Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_genpy.dir
-
-# All Build rule for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_genpy.dir/all: 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir/all
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_genpy.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_genpy.dir/depend
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_genpy.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_genpy.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target enph353_gazebo_genpy"
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_genpy.dir/all
-
-# Build rule for subdir invocation for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_genpy.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 3
-	$(MAKE) -f CMakeFiles/Makefile2 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_genpy.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_genpy.dir/rule
-
-# Convenience name for target.
-enph353_gazebo_genpy: 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_genpy.dir/rule
-
-.PHONY : enph353_gazebo_genpy
-
-# clean rule for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_genpy.dir/clean:
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_genpy.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_genpy.dir/clean
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_genpy.dir/clean
-
-#=============================================================================
-# Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_py.dir
-
-# All Build rule for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_py.dir/all:
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_py.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_py.dir/depend
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_py.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target trajectory_msgs_generate_messages_py"
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_py.dir/all
-
-# Build rule for subdir invocation for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_py.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-trajectory_msgs_generate_messages_py: 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_py.dir/rule
-
-.PHONY : trajectory_msgs_generate_messages_py
-
-# clean rule for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_py.dir/clean:
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_py.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_py.dir/clean
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_py.dir/clean
-
-#=============================================================================
-# Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir
-
-# All Build rule for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir/all: 2024_competition/enph353/enph353_utils/CMakeFiles/std_msgs_generate_messages_py.dir/all
-2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir/all: 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_py.dir/all
-2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir/all: 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_SubmitPlate.dir/all
-2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir/all: 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_GetLegalPlates.dir/all
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir/depend
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num=12,13,14 "Built target enph353_gazebo_generate_messages_py"
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir/all
-
-# Build rule for subdir invocation for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 3
-	$(MAKE) -f CMakeFiles/Makefile2 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir/rule
-
-# Convenience name for target.
-enph353_gazebo_generate_messages_py: 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir/rule
-
-.PHONY : enph353_gazebo_generate_messages_py
-
-# clean rule for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir/clean:
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir/clean
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir/clean
-
-#=============================================================================
-# Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir
-
-# All Build rule for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/all:
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/depend
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target trajectory_msgs_generate_messages_lisp"
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/all
-
-# Build rule for subdir invocation for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-trajectory_msgs_generate_messages_lisp: 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : trajectory_msgs_generate_messages_lisp
-
-# clean rule for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/clean:
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/clean
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/clean
-
-#=============================================================================
 # Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_py.dir
 
 # All Build rule for target.
@@ -2297,168 +2703,6 @@ tf_generate_messages_py: 2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_g
 2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_py.dir/clean:
 	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_py.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_py.dir/clean
 .PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_py.dir/clean
-
-#=============================================================================
-# Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_cpp.dir
-
-# All Build rule for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_cpp.dir/all:
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_cpp.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_cpp.dir/depend
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_cpp.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target tf_generate_messages_cpp"
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_cpp.dir/all
-
-# Build rule for subdir invocation for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_cpp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-tf_generate_messages_cpp: 2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_cpp.dir/rule
-
-.PHONY : tf_generate_messages_cpp
-
-# clean rule for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_cpp.dir/clean:
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_cpp.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_cpp.dir/clean
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_cpp.dir/clean
-
-#=============================================================================
-# Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir
-
-# All Build rule for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/all:
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/depend
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target std_srvs_generate_messages_nodejs"
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/all
-
-# Build rule for subdir invocation for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-std_srvs_generate_messages_nodejs: 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule
-
-.PHONY : std_srvs_generate_messages_nodejs
-
-# clean rule for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/clean:
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/clean
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/clean
-
-#=============================================================================
-# Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_ros_gencfg.dir
-
-# All Build rule for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_ros_gencfg.dir/all:
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_ros_gencfg.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_ros_gencfg.dir/depend
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_ros_gencfg.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_ros_gencfg.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target gazebo_ros_gencfg"
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_ros_gencfg.dir/all
-
-# Build rule for subdir invocation for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_ros_gencfg.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_ros_gencfg.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_ros_gencfg.dir/rule
-
-# Convenience name for target.
-gazebo_ros_gencfg: 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_ros_gencfg.dir/rule
-
-.PHONY : gazebo_ros_gencfg
-
-# clean rule for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_ros_gencfg.dir/clean:
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_ros_gencfg.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_ros_gencfg.dir/clean
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_ros_gencfg.dir/clean
-
-#=============================================================================
-# Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir
-
-# All Build rule for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/all:
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/depend
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target sensor_msgs_generate_messages_nodejs"
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/all
-
-# Build rule for subdir invocation for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-sensor_msgs_generate_messages_nodejs: 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : sensor_msgs_generate_messages_nodejs
-
-# clean rule for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/clean:
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/clean
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/clean
-
-#=============================================================================
-# Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_lisp.dir
-
-# All Build rule for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/all:
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/depend
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target sensor_msgs_generate_messages_lisp"
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/all
-
-# Build rule for subdir invocation for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-sensor_msgs_generate_messages_lisp: 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : sensor_msgs_generate_messages_lisp
-
-# clean rule for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean:
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean
-
-#=============================================================================
-# Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_py.dir
-
-# All Build rule for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_py.dir/all:
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_py.dir/depend
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target sensor_msgs_generate_messages_py"
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_py.dir/all
-
-# Build rule for subdir invocation for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_py.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-sensor_msgs_generate_messages_py: 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
-
-.PHONY : sensor_msgs_generate_messages_py
-
-# clean rule for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean:
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean
 
 #=============================================================================
 # Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_lisp.dir
@@ -2515,11 +2759,146 @@ dynamic_reconfigure_generate_messages_cpp: 2024_competition/enph353/enph353_gaze
 .PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/clean
 
 #=============================================================================
+# Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_cpp.dir
+
+# All Build rule for target.
+2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_cpp.dir/all:
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_cpp.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_cpp.dir/depend
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_cpp.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_cpp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target tf_generate_messages_cpp"
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_cpp.dir/all
+
+# Build rule for subdir invocation for target.
+2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_cpp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_cpp.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+tf_generate_messages_cpp: 2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_cpp.dir/rule
+
+.PHONY : tf_generate_messages_cpp
+
+# clean rule for target.
+2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_cpp.dir/clean:
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_cpp.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_cpp.dir/clean
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_cpp.dir/clean
+
+#=============================================================================
+# Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir
+
+# All Build rule for target.
+2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/all:
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/depend
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target std_srvs_generate_messages_py"
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/all
+
+# Build rule for subdir invocation for target.
+2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+std_srvs_generate_messages_py: 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/rule
+
+.PHONY : std_srvs_generate_messages_py
+
+# clean rule for target.
+2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/clean:
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/clean
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/clean
+
+#=============================================================================
+# Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_ros_gencfg.dir
+
+# All Build rule for target.
+2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_ros_gencfg.dir/all:
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_ros_gencfg.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_ros_gencfg.dir/depend
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_ros_gencfg.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_ros_gencfg.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target gazebo_ros_gencfg"
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_ros_gencfg.dir/all
+
+# Build rule for subdir invocation for target.
+2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_ros_gencfg.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_ros_gencfg.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_ros_gencfg.dir/rule
+
+# Convenience name for target.
+gazebo_ros_gencfg: 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_ros_gencfg.dir/rule
+
+.PHONY : gazebo_ros_gencfg
+
+# clean rule for target.
+2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_ros_gencfg.dir/clean:
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_ros_gencfg.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_ros_gencfg.dir/clean
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_ros_gencfg.dir/clean
+
+#=============================================================================
+# Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir
+
+# All Build rule for target.
+2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/all:
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/depend
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target std_srvs_generate_messages_nodejs"
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/all
+
+# Build rule for subdir invocation for target.
+2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+std_srvs_generate_messages_nodejs: 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule
+
+.PHONY : std_srvs_generate_messages_nodejs
+
+# clean rule for target.
+2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/clean:
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/clean
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/clean
+
+#=============================================================================
+# Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir
+
+# All Build rule for target.
+2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/all:
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/depend
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target dynamic_reconfigure_generate_messages_nodejs"
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/all
+
+# Build rule for subdir invocation for target.
+2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+dynamic_reconfigure_generate_messages_nodejs: 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/rule
+
+.PHONY : dynamic_reconfigure_generate_messages_nodejs
+
+# clean rule for target.
+2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/clean:
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/clean
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/clean
+
+#=============================================================================
 # Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_cpp.dir
 
 # All Build rule for target.
 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_cpp.dir/all: 2024_competition/enph353/enph353_utils/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
-2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_cpp.dir/all: 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/all
+2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_cpp.dir/all: neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/all
 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_cpp.dir/all: 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_SubmitPlate.dir/all
 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_cpp.dir/all: 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_GetLegalPlates.dir/all
 	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_cpp.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_cpp.dir/depend
@@ -2570,114 +2949,6 @@ std_srvs_generate_messages_eus: 2024_competition/enph353/enph353_gazebo/CMakeFil
 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_eus.dir/clean:
 	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_eus.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_eus.dir/clean
 .PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_eus.dir/clean
-
-#=============================================================================
-# Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_eus.dir
-
-# All Build rule for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_eus.dir/all:
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_eus.dir/depend
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target sensor_msgs_generate_messages_eus"
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_eus.dir/all
-
-# Build rule for subdir invocation for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_eus.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-sensor_msgs_generate_messages_eus: 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
-
-.PHONY : sensor_msgs_generate_messages_eus
-
-# clean rule for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean:
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean
-
-#=============================================================================
-# Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir
-
-# All Build rule for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/all:
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/depend
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target std_srvs_generate_messages_py"
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/all
-
-# Build rule for subdir invocation for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-std_srvs_generate_messages_py: 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/rule
-
-.PHONY : std_srvs_generate_messages_py
-
-# clean rule for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/clean:
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/clean
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/clean
-
-#=============================================================================
-# Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir
-
-# All Build rule for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/all:
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/depend
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target dynamic_reconfigure_generate_messages_nodejs"
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/all
-
-# Build rule for subdir invocation for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-dynamic_reconfigure_generate_messages_nodejs: 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/rule
-
-.PHONY : dynamic_reconfigure_generate_messages_nodejs
-
-# clean rule for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/clean:
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/clean
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/clean
-
-#=============================================================================
-# Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_cpp.dir
-
-# All Build rule for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/all:
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/depend
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target sensor_msgs_generate_messages_cpp"
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/all
-
-# Build rule for subdir invocation for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-sensor_msgs_generate_messages_cpp: 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : sensor_msgs_generate_messages_cpp
-
-# clean rule for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean:
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean
 
 #=============================================================================
 # Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/std_srvs_generate_messages_lisp.dir
@@ -2734,62 +3005,61 @@ dynamic_reconfigure_generate_messages_lisp: 2024_competition/enph353/enph353_gaz
 .PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/clean
 
 #=============================================================================
-# Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir
+# Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir
 
 # All Build rule for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir/all: 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_nodejs.dir/all
-2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir/all: 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_lisp.dir/all
-2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir/all: 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_eus.dir/all
-2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir/all: 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir/all
-2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir/all: 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_cpp.dir/all
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir/depend
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target enph353_gazebo_generate_messages"
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir/all
+2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir/all: 2024_competition/enph353/enph353_utils/CMakeFiles/std_msgs_generate_messages_py.dir/all
+2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir/all: neural_net_driving/CMakeFiles/sensor_msgs_generate_messages_py.dir/all
+2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir/all: 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_SubmitPlate.dir/all
+2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir/all: 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_GetLegalPlates.dir/all
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir/depend
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num=12,13,14 "Built target enph353_gazebo_generate_messages_py"
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 12
-	$(MAKE) -f CMakeFiles/Makefile2 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir/all
+2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 3
+	$(MAKE) -f CMakeFiles/Makefile2 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir/rule
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir/rule
 
 # Convenience name for target.
-enph353_gazebo_generate_messages: 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir/rule
+enph353_gazebo_generate_messages_py: 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir/rule
 
-.PHONY : enph353_gazebo_generate_messages
+.PHONY : enph353_gazebo_generate_messages_py
 
 # clean rule for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir/clean:
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir/clean
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir/clean
+2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir/clean:
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir/clean
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir/clean
 
 #=============================================================================
-# Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir
+# Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir
 
 # All Build rule for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/all:
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/depend
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target dynamic_reconfigure_generate_messages_py"
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/all
+2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/all:
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/depend
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target trajectory_msgs_generate_messages_lisp"
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/rule: cmake_check_build_system
+2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/rule
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
-dynamic_reconfigure_generate_messages_py: 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/rule
+trajectory_msgs_generate_messages_lisp: 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/rule
 
-.PHONY : dynamic_reconfigure_generate_messages_py
+.PHONY : trajectory_msgs_generate_messages_lisp
 
 # clean rule for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/clean:
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/clean
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/clean
+2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/clean:
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/clean
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/clean
 
 #=============================================================================
 # Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_eus.dir
@@ -2927,31 +3197,58 @@ gazebo_msgs_generate_messages_eus: 2024_competition/enph353/enph353_gazebo/CMake
 .PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_eus.dir/clean
 
 #=============================================================================
-# Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir
+# Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir
 
 # All Build rule for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/all:
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/depend
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target trajectory_msgs_generate_messages_nodejs"
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/all
+2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/all:
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/depend
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target trajectory_msgs_generate_messages_cpp"
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
+2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/rule
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-trajectory_msgs_generate_messages_nodejs: 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/rule
+trajectory_msgs_generate_messages_cpp: 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule
 
-.PHONY : trajectory_msgs_generate_messages_nodejs
+.PHONY : trajectory_msgs_generate_messages_cpp
 
 # clean rule for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/clean:
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/clean
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/clean
+2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/clean:
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/clean
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/clean
+
+#=============================================================================
+# Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_lisp.dir
+
+# All Build rule for target.
+2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_lisp.dir/all:
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_lisp.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_lisp.dir/depend
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_lisp.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_lisp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target gazebo_msgs_generate_messages_lisp"
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_lisp.dir/all
+
+# Build rule for subdir invocation for target.
+2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_lisp.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+gazebo_msgs_generate_messages_lisp: 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : gazebo_msgs_generate_messages_lisp
+
+# clean rule for target.
+2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_lisp.dir/clean:
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_lisp.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_lisp.dir/clean
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_lisp.dir/clean
 
 #=============================================================================
 # Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_eus.dir
@@ -3008,58 +3305,143 @@ gazebo_msgs_generate_messages_nodejs: 2024_competition/enph353/enph353_gazebo/CM
 .PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_nodejs.dir/clean
 
 #=============================================================================
-# Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir
+# Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir
 
 # All Build rule for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/all:
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/depend
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target trajectory_msgs_generate_messages_cpp"
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/all
+2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/all:
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/depend
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target trajectory_msgs_generate_messages_nodejs"
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
+2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-trajectory_msgs_generate_messages_cpp: 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule
+trajectory_msgs_generate_messages_nodejs: 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/rule
 
-.PHONY : trajectory_msgs_generate_messages_cpp
+.PHONY : trajectory_msgs_generate_messages_nodejs
 
 # clean rule for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/clean:
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/clean
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/clean
+2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/clean:
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/clean
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/clean
 
 #=============================================================================
-# Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_lisp.dir
+# Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_genpy.dir
 
 # All Build rule for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_lisp.dir/all:
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_lisp.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_lisp.dir/depend
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_lisp.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_lisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target gazebo_msgs_generate_messages_lisp"
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_lisp.dir/all
+2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_genpy.dir/all: 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir/all
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_genpy.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_genpy.dir/depend
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_genpy.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_genpy.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target enph353_gazebo_genpy"
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_genpy.dir/all
 
 # Build rule for subdir invocation for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
+2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_genpy.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 3
+	$(MAKE) -f CMakeFiles/Makefile2 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_genpy.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_lisp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_lisp.dir/rule
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_genpy.dir/rule
 
 # Convenience name for target.
-gazebo_msgs_generate_messages_lisp: 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_lisp.dir/rule
+enph353_gazebo_genpy: 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_genpy.dir/rule
 
-.PHONY : gazebo_msgs_generate_messages_lisp
+.PHONY : enph353_gazebo_genpy
 
 # clean rule for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_lisp.dir/clean:
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_lisp.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_lisp.dir/clean
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_lisp.dir/clean
+2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_genpy.dir/clean:
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_genpy.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_genpy.dir/clean
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_genpy.dir/clean
+
+#=============================================================================
+# Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_py.dir
+
+# All Build rule for target.
+2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_py.dir/all:
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_py.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_py.dir/depend
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_py.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_py.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target trajectory_msgs_generate_messages_py"
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_py.dir/all
+
+# Build rule for subdir invocation for target.
+2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_py.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_py.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+trajectory_msgs_generate_messages_py: 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_py.dir/rule
+
+.PHONY : trajectory_msgs_generate_messages_py
+
+# clean rule for target.
+2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_py.dir/clean:
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_py.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_py.dir/clean
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/trajectory_msgs_generate_messages_py.dir/clean
+
+#=============================================================================
+# Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir
+
+# All Build rule for target.
+2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/all:
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/depend
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target dynamic_reconfigure_generate_messages_py"
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/all
+
+# Build rule for subdir invocation for target.
+2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/rule
+
+# Convenience name for target.
+dynamic_reconfigure_generate_messages_py: 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/rule
+
+.PHONY : dynamic_reconfigure_generate_messages_py
+
+# clean rule for target.
+2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/clean:
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/clean
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/clean
+
+#=============================================================================
+# Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir
+
+# All Build rule for target.
+2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir/all: 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_nodejs.dir/all
+2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir/all: 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_lisp.dir/all
+2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir/all: 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_eus.dir/all
+2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir/all: 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_cpp.dir/all
+2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir/all: 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages_py.dir/all
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir/depend
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target enph353_gazebo_generate_messages"
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir/all
+
+# Build rule for subdir invocation for target.
+2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 12
+	$(MAKE) -f CMakeFiles/Makefile2 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir/rule
+
+# Convenience name for target.
+enph353_gazebo_generate_messages: 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir/rule
+
+.PHONY : enph353_gazebo_generate_messages
+
+# clean rule for target.
+2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir/clean:
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir/clean
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/enph353_gazebo_generate_messages.dir/clean
 
 #=============================================================================
 # Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_SubmitPlate.dir
@@ -3087,33 +3469,6 @@ _enph353_gazebo_generate_messages_check_deps_SubmitPlate: 2024_competition/enph3
 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_SubmitPlate.dir/clean:
 	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_SubmitPlate.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_SubmitPlate.dir/clean
 .PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_SubmitPlate.dir/clean
-
-#=============================================================================
-# Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_GetLegalPlates.dir
-
-# All Build rule for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_GetLegalPlates.dir/all:
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_GetLegalPlates.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_GetLegalPlates.dir/depend
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_GetLegalPlates.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_GetLegalPlates.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target _enph353_gazebo_generate_messages_check_deps_GetLegalPlates"
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_GetLegalPlates.dir/all
-
-# Build rule for subdir invocation for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_GetLegalPlates.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_GetLegalPlates.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_GetLegalPlates.dir/rule
-
-# Convenience name for target.
-_enph353_gazebo_generate_messages_check_deps_GetLegalPlates: 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_GetLegalPlates.dir/rule
-
-.PHONY : _enph353_gazebo_generate_messages_check_deps_GetLegalPlates
-
-# clean rule for target.
-2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_GetLegalPlates.dir/clean:
-	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_GetLegalPlates.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_GetLegalPlates.dir/clean
-.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_GetLegalPlates.dir/clean
 
 #=============================================================================
 # Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/tf_generate_messages_eus.dir
@@ -3195,6 +3550,33 @@ gazebo_msgs_generate_messages_py: 2024_competition/enph353/enph353_gazebo/CMakeF
 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_py.dir/clean:
 	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_py.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_py.dir/clean
 .PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/gazebo_msgs_generate_messages_py.dir/clean
+
+#=============================================================================
+# Target rules for target 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_GetLegalPlates.dir
+
+# All Build rule for target.
+2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_GetLegalPlates.dir/all:
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_GetLegalPlates.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_GetLegalPlates.dir/depend
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_GetLegalPlates.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_GetLegalPlates.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fizzer/ros_ws/build/CMakeFiles --progress-num= "Built target _enph353_gazebo_generate_messages_check_deps_GetLegalPlates"
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_GetLegalPlates.dir/all
+
+# Build rule for subdir invocation for target.
+2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_GetLegalPlates.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_GetLegalPlates.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fizzer/ros_ws/build/CMakeFiles 0
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_GetLegalPlates.dir/rule
+
+# Convenience name for target.
+_enph353_gazebo_generate_messages_check_deps_GetLegalPlates: 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_GetLegalPlates.dir/rule
+
+.PHONY : _enph353_gazebo_generate_messages_check_deps_GetLegalPlates
+
+# clean rule for target.
+2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_GetLegalPlates.dir/clean:
+	$(MAKE) -f 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_GetLegalPlates.dir/build.make 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_GetLegalPlates.dir/clean
+.PHONY : 2024_competition/enph353/enph353_gazebo/CMakeFiles/_enph353_gazebo_generate_messages_check_deps_GetLegalPlates.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

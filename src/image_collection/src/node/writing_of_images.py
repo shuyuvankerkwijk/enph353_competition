@@ -30,6 +30,7 @@ class writing_Images:
             except CvBridgeError:
                 return
             
+            save_image = cv2_img
             cv2_img = cv2.resize(cv2_img, None, fx=0.2, fy=0.2, interpolation=cv2.INTER_LINEAR)
 
             # If 'r' (record) is True, save the image
@@ -39,8 +40,6 @@ class writing_Images:
                 filename = f"image_{now_str}_{self.track_section}_Lin_{self.lin:.2f}_Ang_{self.ang:.2f}.png"
 
                 filename ='/home/fizzer/ros_ws/training_for_driving/'+filename
-
-                save_image = cv2.resize(cv2_img, None, fx=0.5, fy=0.5, interpolation=cv2.INTER_LINEAR)
                 
                 cv2.imwrite(filename, save_image)
 

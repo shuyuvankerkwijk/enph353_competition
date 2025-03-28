@@ -2,5 +2,6 @@ training_for_driving/Road/images/*.png
 training_for_driving/Gravel/images/*.png
 training_for_driving/OffRoad/images/*.png
 training_for_driving/ramp/images/*.png
+training_for_reading/letter_crops/*.png
 
 

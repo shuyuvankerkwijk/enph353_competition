@@ -8,23 +8,27 @@ from cv_bridge import CvBridge, CvBridgeError
 import cv2
 import tensorflow as tf
 import numpy as np
+from neural_net_driving.srv import ImageProcessor, ImageProcessorResponse
+import re
 
 # ------------------------------------------------------------------------------
 #                                CONFIGURATION
 # ------------------------------------------------------------------------------
 IMG_HEIGHT = 316                  # Height for resizing input image to the CNN
 IMG_WIDTH = 384                   # Width for resizing input image to the CNN
-NN_OUTPUT_SCALAR = 1.25           # Output scaling factor for predicted velocities
+NN_OUTPUT_SCALAR = 1.0          # Output scaling factor for predicted velocities
 CROSSWALK_RED_RATIO_THRESHOLD = 0.05  # % of red pixels to detect crosswalk
 MOTION_DETECTION_THRESHOLD = 20       # Threshold for pixel differences
 MIN_MOTION_COUNT = 15                 # If motion is <= this, we assume pedestrian is gone
 
-STATUS_PUBLISH_RATE_HZ = 1           # Frequency to publish a status message
+STATUS_PUBLISH_RATE_HZ = 2
+SERVICE_REGEX = r'(.*?) -> lin:([-\d\.]+), ang:([-\d\.]+)'
+VALID_SECTIONS = ["Road", "Gravel", "OffRoad", "ramp"]
 
 # ------------------------------------------------------------------------------
 #                           CLASS: CNNDrivingNode
 # ------------------------------------------------------------------------------
-class CNNDrivingNode:
+class DrivingNode:
     """
     Subscribes to camera images and uses multiple CNN models for different
     track sections to predict forward and angular velocity commands.
@@ -43,12 +47,6 @@ class CNNDrivingNode:
 
         # CV Bridge for image conversions
         self.bridge = CvBridge()
-
-        # Load CNN models for each section
-        self.model_Road = tf.keras.models.load_model('/home/fizzer/ros_ws/training_for_driving/Road/best_model.h5')
-        self.model_Gravel = tf.keras.models.load_model('/home/fizzer/ros_ws/training_for_driving/Gravel/best_model.h5')
-        self.model_OffRoad = tf.keras.models.load_model('/home/fizzer/ros_ws/training_for_driving/OffRoad/best_model.h5')
-        self.model_ramp = tf.keras.models.load_model('/home/fizzer/ros_ws/training_for_driving/ramp/best_model.h5')
 
         # Will store the current model based on self.section
         self.model = None
@@ -78,70 +76,79 @@ class CNNDrivingNode:
             return
         
         cv2_resized = cv2.resize(cv2_img, (IMG_WIDTH, IMG_HEIGHT), interpolation=cv2.INTER_LINEAR)
-        
-        # Check for crosswalk if we haven't stopped yet
-        if self.has_not_reached_crosswalk:
-            height = cv2_resized.shape[0]
-            bottom_section = cv2_resized[int(height * 2/3):, :, :]
+    
+        if self.auto_enabled and self.section in VALID_SECTIONS:
 
-            B_chan, G_chan, R_chan = cv2.split(bottom_section)
-            tolerance = 5
-            red_mask = (R_chan >= (255 - tolerance)) & (G_chan <= tolerance) & (B_chan <= tolerance)
-            red_ratio = np.count_nonzero(red_mask) / red_mask.size
+            # Check for crosswalk if we haven't stopped yet
+            if self.has_not_reached_crosswalk:
+                height = cv2_resized.shape[0]
+                bottom_section = cv2_resized[int(height * 2/3):, :, :]
 
-            if red_ratio >= CROSSWALK_RED_RATIO_THRESHOLD:
-                self.waiting_for_pedestrian = True
-                self.has_not_reached_crosswalk = False
+                B_chan, G_chan, R_chan = cv2.split(bottom_section)
+                tolerance = 5
+                red_mask = (R_chan >= (255 - tolerance)) & (G_chan <= tolerance) & (B_chan <= tolerance)
+                red_ratio = np.count_nonzero(red_mask) / red_mask.size
 
-        # If already at crosswalk, wait until pedestrian is gone
-        if self.waiting_for_pedestrian:
-            height = cv2_resized.shape[0]
-            mid_section = cv2_resized[int(height * 3/8):int(height * 1/2), :, :]
+                if red_ratio >= CROSSWALK_RED_RATIO_THRESHOLD:
+                    self.waiting_for_pedestrian = True
+                    self.has_not_reached_crosswalk = False
 
-            if self.previous_pedestrian_image is not None:
-                b_old, g_old, r_old = cv2.split(self.previous_pedestrian_image)
-                b_new, g_new, r_new = cv2.split(mid_section)
-                diff = 0.4 * cv2.absdiff(b_old, b_new) + \
-                        0.1 * cv2.absdiff(g_old, g_new) + \
-                        0.5 * cv2.absdiff(r_old, r_new)
-                self.previous_pedestrian_image = mid_section
-                _, motion_mask = cv2.threshold(diff, MOTION_DETECTION_THRESHOLD, 255, cv2.THRESH_BINARY)
-                motion_amount = np.sum(motion_mask) / 255
-                if motion_amount <= MIN_MOTION_COUNT:
-                    self.waiting_for_pedestrian = False
+            # If already at crosswalk, wait until pedestrian is gone
+            if self.waiting_for_pedestrian:
+                height = cv2_resized.shape[0]
+                mid_section = cv2_resized[int(height * 3/8):int(height * 1/2), :, :]
+
+                if self.previous_pedestrian_image is not None:
+                    b_old, g_old, r_old = cv2.split(self.previous_pedestrian_image)
+                    b_new, g_new, r_new = cv2.split(mid_section)
+                    diff = 0.4 * cv2.absdiff(b_old, b_new) + \
+                            0.1 * cv2.absdiff(g_old, g_new) + \
+                            0.5 * cv2.absdiff(r_old, r_new)
+                    self.previous_pedestrian_image = mid_section
+                    _, motion_mask = cv2.threshold(diff, MOTION_DETECTION_THRESHOLD, 255, cv2.THRESH_BINARY)
+                    motion_amount = np.sum(motion_mask) / 255
+                    if motion_amount <= MIN_MOTION_COUNT:
+                        self.waiting_for_pedestrian = False
+                    else:
+                        velocity = Twist()
+                        velocity.linear.x = 0.0
+                        velocity.angular.z = 0.0
+                        self.pub_cmd_vel.publish(velocity)
+                        return
                 else:
+                    self.previous_pedestrian_image = mid_section
                     velocity = Twist()
                     velocity.linear.x = 0.0
                     velocity.angular.z = 0.0
                     self.pub_cmd_vel.publish(velocity)
                     return
-            else:
-                self.previous_pedestrian_image = mid_section
+
+            try:
+                ros_image = self.bridge.cv2_to_imgmsg(cv2_resized, encoding="bgr8")
+                srv = rospy.ServiceProxy(self.section + '_service', ImageProcessor)
+                resp = srv(ros_image)
+                lin_pred, ang_pred = self.parse_result(resp.result)
+
+                rospy.loginfo('Lin: '+ str(lin_pred)+' Ang: '+str(ang_pred))
+
                 velocity = Twist()
+
+                if lin_pred < 0.03:
+                    lin_pred = 0.0
+
+                velocity.linear.x = lin_pred * NN_OUTPUT_SCALAR
+                velocity.angular.z = ang_pred * NN_OUTPUT_SCALAR
+
+                self.pub_cmd_vel.publish(velocity)
+            except Exception as e:
+                print(f"Failed to call service: {e}")
+
                 velocity.linear.x = 0.0
                 velocity.angular.z = 0.0
+
                 self.pub_cmd_vel.publish(velocity)
-                return
-
-
-        if self.auto_enabled and self.model is not None:
-            # Prepare image for inference
-            rgb_img = cv2.cvtColor(cv2_resized, cv2.COLOR_BGR2RGB)
-            normalized_img = rgb_img.astype(np.float32) / 255.0
-            input_tensor = tf.expand_dims(normalized_img, axis=0)
-
-            lin_pred, ang_pred = self.model.predict(input_tensor)[0]
-            rospy.loginfo('Lin: '+ str(lin_pred)+' Ang: '+str(ang_pred))
-
-            velocity = Twist()
-
-            if lin_pred < 0.015:
-                lin_pred = 0.0
-
-            velocity.linear.x = lin_pred * NN_OUTPUT_SCALAR
-            velocity.angular.z = ang_pred * NN_OUTPUT_SCALAR
-
-            self.pub_cmd_vel.publish(velocity)
+        else:
+            rospy.logdebug("auto not enabled")
 
         # Visualization (not required, but helpful):
         annotated_img = cv2.resize(cv2_img, (IMG_WIDTH*2, IMG_HEIGHT*2), interpolation=cv2.INTER_LINEAR)
@@ -160,23 +167,8 @@ class CNNDrivingNode:
         cv2.waitKey(1)
 
     def track_section_callback(self, msg):
-        """Sets self.section and loads the correct CNN model."""
-        new_section = msg.data
-        if new_section != self.section:
-            self.section = new_section
-            if self.section == "Road":
-                self.model = self.model_Road
-                self.has_not_reached_crosswalk = True
-                self.waiting_for_pedestrian = False
-                self.previous_pedestrian_image = None
-            elif self.section == "Gravel":
-                self.model = self.model_Gravel
-            elif self.section == "OffRoad":
-                self.model = self.model_OffRoad
-            elif self.section == "ramp":
-                self.model = self.model_ramp
-            else:
-                rospy.logerr("Invalid_section")
+        """Sets self.section"""
+        self.section = msg.data
 
     def auto_drive_callback(self, msg):
         """Enables or disables automatic CNN-based driving."""
@@ -193,6 +185,26 @@ class CNNDrivingNode:
         )
         self.pub_status.publish(status_str)
 
+    def parse_result(self, result_str):
+        """
+        Expects strings of the form:
+        "<some_label> -> lin:<float>, ang:<float>"
+        Returns a tuple: (label, lin_val, ang_val)
+        label: e.g. "road"
+        lin_val: float
+        ang_val: float
+        or None if parsing fails.
+        """
+        pattern = r'(.*?) -> lin:([-\d\.]+), ang:([-\d\.]+)'
+        match = re.match(pattern, result_str.strip())
+        if match:
+            label = match.group(1).strip()         # e.g. "road"
+            lin_val = float(match.group(2))        # e.g. 0.123
+            ang_val = float(match.group(3))        # e.g. -0.456
+            return lin_val, ang_val
+        else:
+            return None
+
 # ------------------------------------------------------------------------------
 #                              MAIN ROS NODE
 # ------------------------------------------------------------------------------
@@ -204,7 +216,7 @@ def image_subscriber():
     """
     rospy.init_node('driving_code')
 
-    driver = CNNDrivingNode()
+    driver = DrivingNode()
 
     # Subscribers
     rospy.Subscriber('/B1/rrbot/camera1/image_raw', Image, driver.image_callback)
