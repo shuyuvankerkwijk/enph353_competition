@@ -18,8 +18,8 @@ IMG_HEIGHT = 316                  # Height for resizing input image to the CNN
 IMG_WIDTH = 384                   # Width for resizing input image to the CNN
 NN_OUTPUT_SCALAR = 1.0          # Output scaling factor for predicted velocities
 CROSSWALK_RED_RATIO_THRESHOLD = 0.05  # % of red pixels to detect crosswalk
-MOTION_DETECTION_THRESHOLD = 20       # Threshold for pixel differences
-MIN_MOTION_COUNT = 15                 # If motion is <= this, we assume pedestrian is gone
+MOTION_DETECTION_THRESHOLD = 15       # Threshold for pixel differences
+MIN_MOTION_COUNT = 25                 # If motion is <= this, we assume pedestrian is gone
 
 STATUS_PUBLISH_RATE_HZ = 2
 SERVICE_REGEX = r'(.*?) -> lin:([-\d\.]+), ang:([-\d\.]+)'
@@ -74,15 +74,14 @@ class DrivingNode:
             cv2_img = self.bridge.imgmsg_to_cv2(msg, "bgr8")
         except CvBridgeError:
             return
-        
-        cv2_resized = cv2.resize(cv2_img, (IMG_WIDTH, IMG_HEIGHT), interpolation=cv2.INTER_LINEAR)
     
         if self.auto_enabled and self.section in VALID_SECTIONS:
+            cv2_resized = cv2.resize(cv2_img, (IMG_WIDTH, IMG_HEIGHT), interpolation=cv2.INTER_LINEAR)
 
             # Check for crosswalk if we haven't stopped yet
             if self.has_not_reached_crosswalk:
                 height = cv2_resized.shape[0]
-                bottom_section = cv2_resized[int(height * 2/3):, :, :]
+                bottom_section = cv2_resized[int(height * 4/5):, :, :]
 
                 B_chan, G_chan, R_chan = cv2.split(bottom_section)
                 tolerance = 5
@@ -114,6 +113,7 @@ class DrivingNode:
                         velocity.linear.x = 0.0
                         velocity.angular.z = 0.0
                         self.pub_cmd_vel.publish(velocity)
+                        cv2.imshow("diff", motion_mask)
                         return
                 else:
                     self.previous_pedestrian_image = mid_section
@@ -142,7 +142,7 @@ class DrivingNode:
                 self.pub_cmd_vel.publish(velocity)
             except Exception as e:
                 print(f"Failed to call service: {e}")
-
+                velocity = Twist()
                 velocity.linear.x = 0.0
                 velocity.angular.z = 0.0
 

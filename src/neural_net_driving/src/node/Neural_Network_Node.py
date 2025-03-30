@@ -27,7 +27,7 @@ class ProcessingNode:
         self.model_Gravel = tf.keras.models.load_model('/home/fizzer/ros_ws/training_for_driving/Gravel/best_model.h5')
         self.model_OffRoad = tf.keras.models.load_model('/home/fizzer/ros_ws/training_for_driving/OffRoad/best_model.h5')
         self.model_ramp = tf.keras.models.load_model('/home/fizzer/ros_ws/training_for_driving/ramp/best_model.h5')
-        self.model_reading = tf.keras.models.load_model("/home/fizzer/ros_ws/training_for_reading/best_model.h5")
+        self.model_reading = tf.keras.models.load_model("/home/fizzer/ros_ws/training_for_reading/V4_model_stripped.h5")
 
 
         rospy.logdebug("loaded cnns")
@@ -108,17 +108,17 @@ class ProcessingNode:
         """Called whenever an `ImageWithID` arrives on `input_images` topic."""
         try:
             # Convert to OpenCV
-            cv_image = self.bridge.imgmsg_to_cv2(msg.image, desired_encoding='32FC1')
+            cv_image = self.bridge.imgmsg_to_cv2(msg.image) #encoding: 32FC1
         except CvBridgeError as e:
             rospy.logerr(f"Image callback cv_bridge error: {e}")
             return
 
         rospy.loginfo(f"Received image with ID: {msg.id}. Shape: {cv_image.shape}, DType: {cv_image.dtype}, Max: {np.max(cv_image)}") #TODO: shorten this, only as a check
-
+        cv_image = cv_image.astype(np.float32) / 255.0
         cv_image = cv_image[..., None]      # (H, W, 1)
         cv_image = np.expand_dims(cv_image, 0)  # (1, H, W, 1)
 
-        letter = np.argmax(self.model_ramp.predict(cv_image)[0], axis = 1)
+        letter = np.argmax(self.model_reading.predict(cv_image)[0])
 
         result_str = f"id: {msg.id}, prediction: {letter}"
 

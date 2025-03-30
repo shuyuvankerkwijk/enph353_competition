@@ -72,7 +72,7 @@ class KeyboardController:
         # Publishers for toggling states and resetting
         self.pub_teleop = rospy.Publisher('/teleop', Bool, queue_size=1)
         self.pub_auto = rospy.Publisher('/auto', Bool, queue_size=1)
-        self.pub_score = rospy.Publisher('/score_tracker', String, queue_size=1)
+        self.pub_score = rospy.Publisher('/score_tracker', String, queue_size=5)
         self.pub_reset = rospy.Publisher('/reset', String, queue_size=1)
         self.pub_cmd_vel = rospy.Publisher('/B1/cmd_vel', Twist, queue_size=1)
         self.pub_status = rospy.Publisher('/keyboard_controller/status', String, queue_size=1)
@@ -83,6 +83,8 @@ class KeyboardController:
 
         # A zero Twist (for stopping motion)
         self.zero_vel = Twist()
+        self.zero_vel.angular.z = 0
+        self.zero_vel.linear.x = 0
 
         # Start the keyboard listener on another thread
         self.listener = keyboard.Listener(on_press=self.handle_keypress)
