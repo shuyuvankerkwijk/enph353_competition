@@ -24,6 +24,8 @@ MOTION_COUNT_FOR_ACTIVE_CROSSING = 500                 # If motion is <= this, w
 CROSSWALK_SPEED_UP = 1.5
 CROSSWALK_CROSSING_TIME = 2
 
+LINEAR_CLAMPING_SPEED = 0.005
+
 STATUS_PUBLISH_RATE_HZ = 2
 SERVICE_REGEX = r'(.*?) -> lin:([-\d\.]+), ang:([-\d\.]+)'
 VALID_SECTIONS = ["Road", "Gravel", "OffRoad", "ramp"]
@@ -85,8 +87,19 @@ class DrivingNode:
     
         if self.auto_enabled and self.section in VALID_SECTIONS:
             cv2_resized = cv2.resize(cv2_img, (IMG_WIDTH, IMG_HEIGHT), interpolation=cv2.INTER_LINEAR)
-
-            cv2.imshow("feed", cv2_img)
+            annotated_img = cv2.resize(cv2_img, (IMG_WIDTH*2, IMG_HEIGHT*2), interpolation=cv2.INTER_LINEAR)
+            text_info = self.section if self.section else "Unknown section"
+            cv2.putText(
+                annotated_img,
+                text_info,
+                (10, 30),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                1,
+                (0, 0, 255),
+                2,
+                cv2.LINE_AA
+            )
+            cv2.imshow("feed", annotated_img)
             cv2.waitKey(1)
 
             # Check for crosswalk if we haven't stopped yet
@@ -172,7 +185,7 @@ class DrivingNode:
                 velocity = Twist()
 
                 # this zeroes the linear velocity to prevent unwanted drivting behaviour  when the robot is supposed to be waiting at for example Yoda, or the truck.
-                if lin_pred < 0.015 and (not self.has_not_reached_crosswalk and self.section == "Road") or self.section == "OffRoad":
+                if lin_pred < LINEAR_CLAMPING_SPEED and ((not self.has_not_reached_crosswalk and self.section == "Road") or self.section == "OffRoad"):
                     lin_pred = 0.0
                     rospy.logwarn("zero'ed the vel")
                     
@@ -196,21 +209,6 @@ class DrivingNode:
         else:
             rospy.logdebug("auto not enabled")
 
-        # Visualization (not required, but helpful):
-        # annotated_img = cv2.resize(cv2_img, (IMG_WIDTH*2, IMG_HEIGHT*2), interpolation=cv2.INTER_LINEAR)
-        # text_info = self.section if self.section else "Unknown section"
-        # cv2.putText(
-        #     annotated_img,
-        #     text_info,
-        #     (10, 30),
-        #     cv2.FONT_HERSHEY_SIMPLEX,
-        #     1,
-        #     (0, 0, 255),
-        #     2,
-        #     cv2.LINE_AA
-        # )
-        # cv2.imshow("feed", annotated_img)
-        # cv2.waitKey(1)
 
     def track_section_callback(self, msg):
         """Sets self.section"""
