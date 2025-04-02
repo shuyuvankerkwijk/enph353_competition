@@ -45,6 +45,9 @@ class ProcessingNode:
         # Publisher for results
         self.pub = rospy.Publisher('/read_image_results', String, queue_size=1000)
 
+        # Buffer for storing images that need to be predicted using CNN
+        self.image_buffer = []
+
         rospy.loginfo("Processing node started: 4 services + subscription to 'input_images'.")
 
     def handle_road(self, req):
@@ -69,6 +72,7 @@ class ProcessingNode:
         except CvBridgeError as e:
             return ImageProcessorResponse(result=f"Gravel service cv_bridge error: {e}")
 
+         # Convert to normalized float32, shape = (H, W, 3)
         rgb_img = cv2.cvtColor(cv_image, cv2.COLOR_BGR2RGB)
         normalized_img = rgb_img.astype(np.float32) / 255.0
         input_tensor = tf.expand_dims(normalized_img, axis=0)
@@ -83,6 +87,7 @@ class ProcessingNode:
         except CvBridgeError as e:
             return ImageProcessorResponse(result=f"OffRoad service cv_bridge error: {e}")
 
+        # Convert to normalized float32, shape = (H, W, 3)
         rgb_img = cv2.cvtColor(cv_image, cv2.COLOR_BGR2RGB)
         normalized_img = rgb_img.astype(np.float32) / 255.0
         input_tensor = tf.expand_dims(normalized_img, axis=0)
@@ -97,6 +102,7 @@ class ProcessingNode:
         except CvBridgeError as e:
             return ImageProcessorResponse(result=f"Ramp service cv_bridge error: {e}")
 
+         # Convert to normalized float32, shape = (H, W, 3)
         rgb_img = cv2.cvtColor(cv_image, cv2.COLOR_BGR2RGB)
         normalized_img = rgb_img.astype(np.float32) / 255.0
         input_tensor = tf.expand_dims(normalized_img, axis=0)
@@ -107,26 +113,38 @@ class ProcessingNode:
     def image_callback(self, msg):
         """Called whenever an `ImageWithID` arrives on `input_images` topic."""
         try:
-            # Convert to OpenCV
             cv_image = self.bridge.imgmsg_to_cv2(msg.image) #encoding: 32FC1
         except CvBridgeError as e:
             rospy.logerr(f"Image callback cv_bridge error: {e}")
             return
+        
+        self.image_buffer.append([cv_image, msg.id])
 
-        rospy.loginfo(f"Received image with ID: {msg.id}. Shape: {cv_image.shape}, DType: {cv_image.dtype}, Max: {np.max(cv_image)}") #TODO: shorten this, only as a check
-        cv_image = cv_image.astype(np.float32) / 255.0
-        cv_image = cv_image[..., None]      # (H, W, 1)
-        cv_image = np.expand_dims(cv_image, 0)  # (1, H, W, 1)
+    def process_image(self):
+        if len(self.image_buffer) > 0:
+            cv_image, id = self.image_buffer.pop(0)
 
-        letter = np.argmax(self.model_reading.predict(cv_image)[0])
+            # rospy.loginfo(f"Received image with ID: {id}. Shape: {cv_image.shape}, DType: {cv_image.dtype}, Max: {np.max(cv_image)}") #TODO: shorten this, only as a check
+            cv_image = cv_image.astype(np.float32) / 255.0
+            cv_image = cv_image[..., None]      # (H, W, 1)
+            cv_image = np.expand_dims(cv_image, 0)  # (1, H, W, 1)
 
-        result_str = f"id: {msg.id}, prediction: {letter}"
+            letter = np.argmax(self.model_reading.predict(cv_image)[0])
 
-        self.pub.publish(result_str)
+            result_str = f"id: {id}, prediction: {letter}"
+
+            self.pub.publish(result_str)
+
 
 if __name__ == '__main__':
     try:
         node = ProcessingNode()
-        rospy.spin()
+        
+        rate = rospy.Rate(20)  # 10Hz
+        while not rospy.is_shutdown():
+            node.process_image()
+            rate.sleep()
+
+        # rospy.spin()
     except rospy.ROSInterruptException:
         pass

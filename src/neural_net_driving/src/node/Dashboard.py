@@ -12,7 +12,7 @@ latest_status = {
     "control_node": "No data",
     "driving_code": "No data",
     "section_detector": "No data",
-    "sift_node": "No data",
+    "sift_node": "",
 }
 
 status_lock = threading.Lock()
@@ -40,7 +40,7 @@ def section_det_status_cb(msg):
 def sift_status_cb(msg):
     global latest_status
     with status_lock:
-        latest_status["sift_node"] = msg.data
+        latest_status["sift_node"] = latest_status["sift_node"] + ", " + msg.data
 
 def display_dashboard():
     """
@@ -84,7 +84,7 @@ def dashboard_node():
     rospy.Subscriber("/control_node/status", String, control_status_cb)
     rospy.Subscriber("/driving_code/status", String, driving_status_cb)
     rospy.Subscriber("/section_detector/status", String, section_det_status_cb)
-    rospy.Subscriber("/sift_node/status", String, sift_status_cb)
+    rospy.Subscriber('/SIFT_node/status', String, sift_status_cb)
 
     # Launch the display loop (this blocks until ROS shutdown)
     display_dashboard()

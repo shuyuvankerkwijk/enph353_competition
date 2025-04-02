@@ -9,6 +9,8 @@ import datetime
 from geometry_msgs.msg import Twist
 import os
 
+IMG_HEIGHT = 316
+IMG_WIDTH = 384 
 
 class writing_Images:
 
@@ -30,8 +32,7 @@ class writing_Images:
             except CvBridgeError:
                 return
             
-            save_image = cv2_img
-            cv2_img = cv2.resize(cv2_img, None, fx=0.2, fy=0.2, interpolation=cv2.INTER_LINEAR)
+            save_image = cv2.resize(cv2_img, (IMG_WIDTH, IMG_HEIGHT), interpolation=cv2.INTER_LINEAR)
 
             # If 'r' (record) is True, save the image
             if self.r:

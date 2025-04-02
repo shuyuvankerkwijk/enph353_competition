@@ -16,7 +16,7 @@ SIFT_IMAGE_WIDTH = 1536
 SIFT_TEMPLATE_SCALE = 0.4
 BLUE_THRESHOLD_PERCENTAGE = 0.55
 MIN_MATCH_COUNT = 24
-CATEGORY_LIST = ["SIZE", "CRIME", "TIME", "PLACE", "MOTIVE", "WEAPON", "BANDIT"]
+CATEGORY_LIST = ['SIZE','VICTIM','CRIME','TIME','PLACE','MOTIVE','WEAPON','BANDIT']
 
 class Sign:
     
@@ -91,16 +91,16 @@ class Concensus:
         self.messages = []
         self.last_updated_time = None
         self.broadcast = False
-        self.threshold = 1 # valid messages can only have 0 or 1 mistakes
+        self.threshold = 0 # valid messages cannot have mistakes
 
     def add(self, message, score):
         if score <= self.threshold:
-            self.last_updated_time = datetime.now()
+            self.last_updated_time = rospy.get_rostime()
             self.messages.append(message)
 
     def attempt_concensus(self):
         if self.last_updated_time is not None:
-            if (self.last_updated_time - datetime.now()).seconds >= 5:
+            if (rospy.get_rostime() - self.last_updated_time).to_sec() >= 5:
                 message = self.majority_vote()
                 return message
         return None
@@ -145,8 +145,7 @@ class sift_class:
         for i, category in enumerate(CATEGORY_LIST):
             self.consensuses[category] = Concensus()
 
-
-    def blue_threshold(self, image):
+    def blue_threshold_1(self, image):
         B, G, R = cv2.split(image)
         red_green_close = np.abs(R.astype(np.int16) - G.astype(np.int16)) <= 10
         blue_dominant = (((B.astype(np.int16) - R.astype(np.int16)) >= 90) & ((B.astype(np.int16) - R.astype(np.int16)) <= 110)) & \
@@ -155,13 +154,14 @@ class sift_class:
         blue_mask = red_green_close & blue_dominant
         result = np.zeros_like(B, dtype=np.uint8)
         result[blue_mask] = 255
-
-        # hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
-        # lower_blue = np.array([100, 150, 50])
-        # upper_blue = np.array([130, 255, 255])
-        # blue_mask = cv2.inRange(hsv, lower_blue, upper_blue)
-        # return blue_mask
         return result
+    
+    def blue_threshold_2(self, image):
+        hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+        lower_blue = np.array([90, 100, 75]) #100, 150, 50 
+        upper_blue = np.array([140, 255, 255]) #130, 255, 255
+        blue_mask = cv2.inRange(hsv, lower_blue, upper_blue)
+        return blue_mask
 
     def image_callback(self, msg):
         """
@@ -174,34 +174,33 @@ class sift_class:
             return
         
         # calculate if blue content is above threshold
-        blue_mask = self.blue_threshold(cv2_img)
+        blue_mask = self.blue_threshold_1(cv2_img)
         white_pixels = np.count_nonzero(blue_mask == 255)
         percentage_blue = (white_pixels/blue_mask.size)*100
         
-        # show image and percentage, comment out if not needed
-        text = f"{percentage_blue:.2f}%"
-        font = cv2.FONT_HERSHEY_SIMPLEX
-        org = (10, 30)  # Bottom-left corner of text
-        fontScale = 1
-        color = (0, 0, 255)
-        thickness = 2
-        binary_bgr = cv2.cvtColor(blue_mask, cv2.COLOR_GRAY2BGR)
-        binary_bgr = cv2.resize(binary_bgr, (768, 632), interpolation=cv2.INTER_LINEAR)
-        cv2.putText(binary_bgr, text, org, font, fontScale, color, thickness, cv2.LINE_AA)
-        cv2.imshow("SIFT", binary_bgr)
-        cv2.waitKey(1)
+        # # show image and percentage, comment out if not needed
+        # text = f"{percentage_blue:.2f}%"
+        # font = cv2.FONT_HERSHEY_SIMPLEX
+        # org = (10, 30)  # Bottom-left corner of text
+        # fontScale = 1
+        # color = (0, 0, 255)
+        # thickness = 2
+        # binary_bgr = cv2.cvtColor(blue_mask, cv2.COLOR_GRAY2BGR)
+        # binary_bgr = cv2.resize(binary_bgr, (768, 632), interpolation=cv2.INTER_LINEAR)
+        # cv2.putText(binary_bgr, text, org, font, fontScale, color, thickness, cv2.LINE_AA)
+        # cv2.imshow("SIFT", binary_bgr)
+        # cv2.waitKey(1)
 
         # if percentage > 0.55%, process the image
         if percentage_blue >= BLUE_THRESHOLD_PERCENTAGE:
             rospy.loginfo(f"Appended image with threshold {percentage_blue}")
-            self.pub_status.publish(String(""))
             self.image_buffer.append(cv2_img)
 
     def process_image(self):
         if len(self.image_buffer) == 0:
             return
 
-        image = self.image_buffer.pop()
+        image = self.image_buffer.pop(0)
 
         try:
             image_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -215,7 +214,6 @@ class sift_class:
             good_matches = [m for m, n in matches if m.distance < 0.7 * n.distance]
 
             if len(good_matches) <= MIN_MATCH_COUNT:
-                # rospy.logwarn(f"Not enough matches ({len(good_matches)}) to compute homography. Skipping image.")
                 return
 
             src_pts = np.float32([kp[m.queryIdx].pt for m in good_matches]).reshape(-1, 1, 2)
@@ -223,7 +221,6 @@ class sift_class:
             H, mask = cv2.findHomography(src_pts, dst_pts, cv2.RANSAC, 5.0)
 
             if H is None:
-                # rospy.logwarn("Homography could not be computed. Skipping image.")
                 return
             
              # warps the sign found in the image to the template size (1400x2400)
@@ -246,27 +243,28 @@ class sift_class:
             rospy.logerr(f"Exception during SIFT/homography: {e}")
             return
         
-        # cv2.imshow("warped_image", warped_image)
-        # cv2.waitKey(1)
-        # cv2.imwrite(f"/home/fizzer/ros_ws/training_for_driving/debug_warped_image{warped_image[40][40]}.png", warped_image)
-
         try:
-            blue_mask = self.blue_threshold(warped_image)
-            kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
-            mask_cleaned = cv2.morphologyEx(blue_mask, cv2.MORPH_CLOSE, kernel, iterations=2)
+            blue_mask = self.blue_threshold_2(warped_image)
 
-            border_check = [mask_cleaned[10, 10], mask_cleaned[10, -10], mask_cleaned[-10, 10], mask_cleaned[-10, -10]]
+            kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3, 3))
+            # dilated = cv2.dilate(blue_mask, kernel, iterations=1)
+            mask_cleaned = cv2.morphologyEx(blue_mask, cv2.MORPH_CLOSE, kernel, iterations=1)
 
-            #TODO
-            # if all(val == 255 for val in border_check):
+            # border_check = [mask_cleaned[10, 10], mask_cleaned[10, -10], mask_cleaned[-10, 10], mask_cleaned[-10, -10]]
+
+            # num_white_corners = sum(val == 255 for val in border_check)
+
+            # if num_white_corners >= 3:
             #     rospy.loginfo("Border appears complete.")
+            #     cv2.imwrite(f"/home/fizzer/ros_ws/training_for_driving/COMPLETE_debug_warped_image{warped_image[40][40][2]}.png", warped_image)
             # else:
-            #     rospy.logwarn("Border is incomplete. Continuing anyway...")
+            #     rospy.loginfo("Border is incomplete. Continuing anyway...")
+            #     cv2.imwrite(f"/home/fizzer/ros_ws/training_for_driving/INCOMPLETE_debug_warped_image{warped_image[40][40][2]}.png", warped_image)
 
             flood_filled = mask_cleaned.copy()
-            cv2.floodFill(flood_filled, None, (14, 14), 0)
+            cv2.floodFill(flood_filled, None, (20, 20), 0)
 
-            num_labels, labels, stats, _ = cv2.connectedComponentsWithStats(flood_filled, connectivity=4)
+            num_labels, labels, stats, _ = cv2.connectedComponentsWithStats(flood_filled, connectivity=8)
 
             letter_boxes = []
             for i in range(1, num_labels):
@@ -285,6 +283,51 @@ class sift_class:
 
             top_half = sorted(top_half, key=lambda b: b[0])
             bottom_half = sorted(bottom_half, key=lambda b: b[0])
+
+            refining_used = False
+
+            def refine_letter_boxes(boxes, flood_filled, threshold_min, threshold_max):
+                refined_boxes = []
+
+                useful = False
+
+                for i, (x, y, w, h) in enumerate(boxes):
+                    area = w * h
+
+                    if area > threshold_max:
+                        useful = True
+
+                        roi = flood_filled[y:y+h, x:x+w]
+
+                        # Project to vertical axis: sum pixels column-wise
+                        vertical_sum = np.sum(roi == 255, axis=0)
+
+                        # Find the column with the minimum number of white pixels (i.e. gap)
+                        split_idx = np.argmin(vertical_sum[w//3:2*w//3])
+
+                        rospy.loginfo("Split index: " + str(split_idx))
+
+                        left_area = split_idx * h
+                        right_area = (w - split_idx) * h
+
+                        # Only split if both sides are big enough
+                        if left_area > threshold_min and right_area > threshold_min:
+                            rospy.loginfo("Splitting box w split_idx")
+                            refined_boxes.append((x, y, split_idx, h))
+                            refined_boxes.append((x + split_idx, y, w - split_idx, h))
+                        else:
+                            # If areas are too small, split in half
+                            rospy.loginfo("Splitting box w half")
+                            refined_boxes.append((x, y, w//2, h))
+                            refined_boxes.append((x + w//2, y, w//2, h))
+                    else:
+                        refined_boxes.append((x, y, w, h))
+
+                return sorted(refined_boxes, key=lambda b: b[0]), useful
+
+            if 4 <= len(top_half) <= 6:
+                top_half_refined, refining_used = refine_letter_boxes(top_half, flood_filled, 12000, 30000)
+                bottom_half_refined, refining_used = refine_letter_boxes(bottom_half, flood_filled, 12000, 30000)
 
             def crop_or_pad_box(letter_boxes):
                 target_width = 200
@@ -312,13 +355,38 @@ class sift_class:
             rospy.logerr(f"Exception during thresholding/cropping: {e}")
             return
     
-        # circled_image = cv2.cvtColor(flood_filled, cv2.COLOR_GRAY2BGR)
-        # for (x, y, w, h) in (top_half + bottom_half):
-        #     cv2.rectangle(circled_image, (x, y), (x + w, y + h), (0, 255, 0), 2)
-        # cv2.imwrite(f"/home/fizzer/ros_ws/training_for_driving/debug_circled_image{warped_image[40][40][2]}.png", circled_image)
-        # rospy.loginfo("Saved wcircledarped image")
-        # cv2.imshow("circled_image", circled_image)
-        # cv2.waitKey(1)
+        circled_image = cv2.cvtColor(flood_filled, cv2.COLOR_GRAY2BGR)
+        for (x, y, w, h) in (top_half + bottom_half):
+            cv2.rectangle(circled_image, (x, y), (x + w, y + h), (0, 255, 0), 2)
+
+        try:
+            circled_image_2 = cv2.cvtColor(flood_filled, cv2.COLOR_GRAY2BGR)
+            for (x, y, w, h) in (top_half_refined + bottom_half_refined):
+                cv2.rectangle(circled_image_2, (x, y), (x + w, y + h), (0, 255, 0), 2)
+        except Exception as e:
+            circled_image_2 = cv2.cvtColor(flood_filled, cv2.COLOR_GRAY2BGR)
+
+        text = f"Refining: {'USED' if refining_used else 'NOT USED'}"
+        font = cv2.FONT_HERSHEY_SIMPLEX
+        cv2.putText(circled_image_2, text, (10, 25), font, 0.8, (0, 0, 255), 2, cv2.LINE_AA)
+
+        desired_size = (int(243*1.8), int(200*1.8))
+        image_resized = cv2.resize(image, desired_size)
+        warped_resized = cv2.resize(warped_image, desired_size)
+        # blue_mask_resized = cv2.resize(blue_mask, desired_size)
+        circled_resized = cv2.resize(circled_image, desired_size)
+        circled_2_resized = cv2.resize(circled_image_2, desired_size)
+
+        # # If blue_mask is grayscale, convert to BGR so we can concatenate
+        # if len(blue_mask_resized.shape) == 2:
+        #     blue_mask_resized = cv2.cvtColor(blue_mask_resized, cv2.COLOR_GRAY2BGR)
+
+        # Concatenate images horizontally
+        combined = np.hstack((image_resized, warped_resized, circled_resized, circled_2_resized))
+
+        # Show using OpenCV
+        cv2.imshow("PIPELINE", combined)
+        cv2.waitKey(1)
         
         try:
             self.sign_index += 1
@@ -371,13 +439,11 @@ class sift_class:
             sign_index, type_char, letter_index, prediction = self.parse_result_string(result_string.data)
             prediction = chr(ord('A') + prediction) # convert to letter
 
-            # rospy.loginfo(f"sidx: {sign_index}, typ char: {type_char}, lidx: {letter_index}, prediction: {prediction}")
-
             sign = self.signs[int(sign_index)]
             sign.place(type_char, letter_index, prediction)
 
             if sign.done == True: 
-                # rospy.loginfo(f"sign {sign_index} is DONE, with score {sign.score} and letters {str(sign.top_letters)} and {sign.top_word}, {sign.bottom_word}")
+                rospy.loginfo(f"sign {sign_index} is DONE, with score {sign.score} and letters {str(sign.top_letters)} and {sign.top_word}, {sign.bottom_word}")
                 self.consensuses[sign.top_word].add(sign.bottom_word, sign.score)
                 self.signs.pop(int(sign_index))
          
@@ -389,7 +455,8 @@ class sift_class:
             message = concensus.attempt_concensus()
             if message is not None:
                 if concensus.broadcast == False:
-                    rospy.logerr("Determined: " + category + ": " + message)
+                    rospy.logerr("Determined: " + category + ": " + message + " from " + str(len(concensus.messages)) + " messages")
+                    self.pub_status.publish(category + ": " + message)
                     concensus.broadcast = True
 
                 # if category == "SIZE":
@@ -413,7 +480,6 @@ class sift_class:
     def results(self, msg):
         return
 
-
 def image_subscriber():
     rospy.init_node('SIFT_node')  # Renamed for clarity
 
@@ -434,17 +500,9 @@ def image_subscriber():
         sift.process_image()
         sift.attempt_concensus()
         rate.sleep()
- 
-
 
 if __name__ == "__main__":
     try:
         image_subscriber()
     except rospy.ROSInterruptException:
         pass
-
-
-
-
-
-    

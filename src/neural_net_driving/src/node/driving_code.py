@@ -10,6 +10,7 @@ import tensorflow as tf
 import numpy as np
 from neural_net_driving.srv import ImageProcessor, ImageProcessorResponse
 import re
+from collections import deque
 
 # ------------------------------------------------------------------------------
 #                                CONFIGURATION
@@ -19,7 +20,9 @@ IMG_WIDTH = 384                   # Width for resizing input image to the CNN
 NN_OUTPUT_SCALAR = 1.0          # Output scaling factor for predicted velocities
 CROSSWALK_RED_RATIO_THRESHOLD = 0.05  # % of red pixels to detect crosswalk
 MOTION_DETECTION_THRESHOLD = 15       # Threshold for pixel differences
-MIN_MOTION_COUNT = 25                 # If motion is <= this, we assume pedestrian is gone
+MOTION_COUNT_FOR_ACTIVE_CROSSING = 500                 # If motion is <= this, we assume pedestrian is gone
+CROSSWALK_SPEED_UP = 1.5
+CROSSWALK_CROSSING_TIME = 2
 
 STATUS_PUBLISH_RATE_HZ = 2
 SERVICE_REGEX = r'(.*?) -> lin:([-\d\.]+), ang:([-\d\.]+)'
@@ -58,6 +61,11 @@ class DrivingNode:
         self.has_not_reached_crosswalk = True    # True until first red line detection
         self.waiting_for_pedestrian = False      # True once red line is detected
         self.previous_pedestrian_image = None    # For motion detection across frames
+        self.time_starting_crosswalk = None
+        self.pedestrian_crossing = False
+        self.pedestian_queue = deque(maxlen=10)
+        for i in range(10):
+            self.pedestian_queue.append(False)
 
     def image_callback(self, msg):
         """
@@ -78,6 +86,9 @@ class DrivingNode:
         if self.auto_enabled and self.section in VALID_SECTIONS:
             cv2_resized = cv2.resize(cv2_img, (IMG_WIDTH, IMG_HEIGHT), interpolation=cv2.INTER_LINEAR)
 
+            cv2.imshow("feed", cv2_img)
+            cv2.waitKey(1)
+
             # Check for crosswalk if we haven't stopped yet
             if self.has_not_reached_crosswalk:
                 height = cv2_resized.shape[0]
@@ -91,13 +102,23 @@ class DrivingNode:
                 if red_ratio >= CROSSWALK_RED_RATIO_THRESHOLD:
                     self.waiting_for_pedestrian = True
                     self.has_not_reached_crosswalk = False
+                    velocity = Twist()
+                    velocity.linear.x = 0.0
+                    velocity.angular.z = 0.0
+                    self.pub_cmd_vel.publish(velocity)
 
             # If already at crosswalk, wait until pedestrian is gone
             if self.waiting_for_pedestrian:
-                height = cv2_resized.shape[0]
-                mid_section = cv2_resized[int(height * 3/8):int(height * 1/2), :, :]
+                height = cv2_img.shape[0]
+                mid_section = cv2_img[int(height * 3/8):int(height * 1/2), :, :]
 
                 if self.previous_pedestrian_image is not None:
+
+                    velocity = Twist()
+                    velocity.linear.x = 0.0
+                    velocity.angular.z = 0.0
+                    self.pub_cmd_vel.publish(velocity)
+                
                     b_old, g_old, r_old = cv2.split(self.previous_pedestrian_image)
                     b_new, g_new, r_new = cv2.split(mid_section)
                     diff = 0.4 * cv2.absdiff(b_old, b_new) + \
@@ -106,15 +127,31 @@ class DrivingNode:
                     self.previous_pedestrian_image = mid_section
                     _, motion_mask = cv2.threshold(diff, MOTION_DETECTION_THRESHOLD, 255, cv2.THRESH_BINARY)
                     motion_amount = np.sum(motion_mask) / 255
-                    if motion_amount <= MIN_MOTION_COUNT:
-                        self.waiting_for_pedestrian = False
+                    rospy.loginfo(f"motion amount: {motion_amount}")
+                    cv2.imshow("diff", motion_mask)
+
+                    if motion_amount >= MOTION_COUNT_FOR_ACTIVE_CROSSING:
+                        self.pedestian_queue.append(True)
                     else:
-                        velocity = Twist()
-                        velocity.linear.x = 0.0
-                        velocity.angular.z = 0.0
-                        self.pub_cmd_vel.publish(velocity)
-                        cv2.imshow("diff", motion_mask)
+                        self.pedestian_queue.append(False)
+
+                    if all(self.pedestian_queue): #this check for if he is activley crossing the crosswalk
+                        self.pedestrian_crossing = True
                         return
+
+                    #this checks for if we watched him activley cross the crosswalk and if he is not moving
+                    elif self.pedestrian_crossing and all(not x for x in self.pedestian_queue):
+                        # self.pedestrian_crossing = False
+                        rospy.logwarn("safe to cross!")
+                        self.waiting_for_pedestrian = False
+                        self.time_starting_crosswalk = rospy.Time.now()
+                        # return
+                    
+                    #if neither return
+                    else:
+                        return
+                    
+
                 else:
                     self.previous_pedestrian_image = mid_section
                     velocity = Twist()
@@ -122,7 +159,8 @@ class DrivingNode:
                     velocity.angular.z = 0.0
                     self.pub_cmd_vel.publish(velocity)
                     return
-
+            #normal driving behaviour.
+            
             try:
                 ros_image = self.bridge.cv2_to_imgmsg(cv2_resized, encoding="bgr8")
                 srv = rospy.ServiceProxy(self.section + '_service', ImageProcessor)
@@ -133,11 +171,19 @@ class DrivingNode:
 
                 velocity = Twist()
 
-                if lin_pred < 0.03:
+                # this zeroes the linear velocity to prevent unwanted drivting behaviour  when the robot is supposed to be waiting at for example Yoda, or the truck.
+                if lin_pred < 0.015 and (not self.has_not_reached_crosswalk and self.section == "Road") or self.section == "OffRoad":
                     lin_pred = 0.0
+                    rospy.logwarn("zero'ed the vel")
+                    
 
                 velocity.linear.x = lin_pred * NN_OUTPUT_SCALAR
                 velocity.angular.z = ang_pred * NN_OUTPUT_SCALAR
+
+                if self.time_starting_crosswalk is not None and (rospy.Time.now() - self.time_starting_crosswalk).to_sec() < CROSSWALK_CROSSING_TIME:
+                    velocity.linear.x = lin_pred * NN_OUTPUT_SCALAR * CROSSWALK_SPEED_UP
+                    velocity.angular.z = ang_pred * NN_OUTPUT_SCALAR  * CROSSWALK_SPEED_UP
+                    rospy.logwarn("speeding up to cross crosswalk!")
 
                 self.pub_cmd_vel.publish(velocity)
             except Exception as e:
@@ -151,20 +197,20 @@ class DrivingNode:
             rospy.logdebug("auto not enabled")
 
         # Visualization (not required, but helpful):
-        annotated_img = cv2.resize(cv2_img, (IMG_WIDTH*2, IMG_HEIGHT*2), interpolation=cv2.INTER_LINEAR)
-        text_info = self.section if self.section else "Unknown section"
-        cv2.putText(
-            annotated_img,
-            text_info,
-            (10, 30),
-            cv2.FONT_HERSHEY_SIMPLEX,
-            1,
-            (0, 0, 255),
-            2,
-            cv2.LINE_AA
-        )
-        cv2.imshow("feed", annotated_img)
-        cv2.waitKey(1)
+        # annotated_img = cv2.resize(cv2_img, (IMG_WIDTH*2, IMG_HEIGHT*2), interpolation=cv2.INTER_LINEAR)
+        # text_info = self.section if self.section else "Unknown section"
+        # cv2.putText(
+        #     annotated_img,
+        #     text_info,
+        #     (10, 30),
+        #     cv2.FONT_HERSHEY_SIMPLEX,
+        #     1,
+        #     (0, 0, 255),
+        #     2,
+        #     cv2.LINE_AA
+        # )
+        # cv2.imshow("feed", annotated_img)
+        # cv2.waitKey(1)
 
     def track_section_callback(self, msg):
         """Sets self.section"""
