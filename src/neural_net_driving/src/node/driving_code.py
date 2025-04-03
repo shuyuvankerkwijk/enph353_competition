@@ -168,6 +168,7 @@ class DrivingNode:
                         rospy.logwarn("safe to cross!")
                         self.waiting_for_pedestrian = False
                         self.time_starting_crosswalk = rospy.Time.now()
+                        cv2.destroyWindow("diff")
                         # return
                     
                     #if neither return
