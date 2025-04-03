@@ -17,15 +17,23 @@ from collections import deque
 # ------------------------------------------------------------------------------
 IMG_HEIGHT = 316                  # Height for resizing input image to the CNN
 IMG_WIDTH = 384                   # Width for resizing input image to the CNN
-NN_OUTPUT_SCALAR = 1.0          # Output scaling factor for predicted velocities
+NN_OUTPUT_SCALAR = 2.2              # Output scaling factor for predicted velocities
 CROSSWALK_RED_RATIO_THRESHOLD = 0.05  # % of red pixels to detect crosswalk
-MOTION_DETECTION_THRESHOLD = 15       # Threshold for pixel differences
+MOTION_DETECTION_THRESHOLD = 20  #was 15 at 30fps     # Threshold for pixel differences
 MOTION_COUNT_FOR_ACTIVE_CROSSING = 500                 # If motion is <= this, we assume pedestrian is gone
 CROSSWALK_SPEED_UP = 1.5
-CROSSWALK_CROSSING_TIME = 2
+CROSSWALK_TO_TRUCK_TIME = 12
+CROSSWALK_QUEUE_LENGTH = 12
+
+ROAD_1_SPEEDUP_FACTOR = 2
+ROAD_2_SPEEDUP_FACTOR = 1
+GRAVEL_SPEEDUP_FACTOR = 2.4
+OFFROAD_SPEEDUP_FACTOR = 1.1
+RAMP_SPEEDUP_FACTOR = 2.4
+
 
 LINEAR_CLAMPING_SPEED_TRUCK = 0.085
-LINEAR_CLAMPING_SPEED_YODA = 0.05
+LINEAR_CLAMPING_SPEED_YODA = 0.04 #0.05
 
 
 STATUS_PUBLISH_RATE_HZ = 2
@@ -67,8 +75,8 @@ class DrivingNode:
         self.previous_pedestrian_image = None    # For motion detection across frames
         self.time_starting_crosswalk = None
         self.pedestrian_crossing = False
-        self.pedestian_queue = deque(maxlen=10)
-        for i in range(10):
+        self.pedestian_queue = deque(maxlen=CROSSWALK_QUEUE_LENGTH)
+        for i in range(CROSSWALK_QUEUE_LENGTH):
             self.pedestian_queue.append(False)
 
     def image_callback(self, msg):
@@ -125,7 +133,7 @@ class DrivingNode:
             # If already at crosswalk, wait until pedestrian is gone
             if self.waiting_for_pedestrian:
                 height = cv2_img.shape[0]
-                mid_section = cv2_img[int(height * 3/8):int(height * 1/2), :, :]
+                mid_section = cv2_img[int(height * 15/32):int(height * 1/2), :, :]
 
                 if self.previous_pedestrian_image is not None:
 
@@ -188,21 +196,40 @@ class DrivingNode:
 
                 # this zeroes the linear velocity to prevent unwanted drivting behaviour  when the robot is supposed to be waiting at for example Yoda, or the truck.
                 if lin_pred < LINEAR_CLAMPING_SPEED_TRUCK and not self.has_not_reached_crosswalk and self.section == "Road":
-                    lin_pred = 0.0
+                    velocity.linear.x = 0.0
+                    velocity.angular.z = ang_pred
+                    self.pub_cmd_vel.publish(velocity)
                     rospy.logwarn("zero'ed the vel")
+                    return
 
                 if lin_pred < LINEAR_CLAMPING_SPEED_YODA and self.section == "OffRoad":
-                    lin_pred = 0.0
+                    velocity.linear.x = 0.0
+                    velocity.angular.z = ang_pred
+                    self.pub_cmd_vel.publish(velocity)
                     rospy.logwarn("zero'ed the vel")
+                    return
+                
+                if self.section == 'ramp':
+                    velocity.linear.x = lin_pred * RAMP_SPEEDUP_FACTOR
+                    velocity.angular.z = ang_pred * RAMP_SPEEDUP_FACTOR
+                elif self.section == 'Gravel':
+                    velocity.linear.x = lin_pred * GRAVEL_SPEEDUP_FACTOR
+                    velocity.angular.z = ang_pred * GRAVEL_SPEEDUP_FACTOR
+                elif self.section == 'OffRoad':
+                    velocity.linear.x = lin_pred * OFFROAD_SPEEDUP_FACTOR
+                    velocity.angular.z = ang_pred * OFFROAD_SPEEDUP_FACTOR
+                elif self.section == 'Road' and self.has_not_reached_crosswalk:
+                    velocity.linear.x = lin_pred * ROAD_1_SPEEDUP_FACTOR
+                    velocity.angular.z = ang_pred * ROAD_1_SPEEDUP_FACTOR
+                elif self.section == 'Road' and not self.has_not_reached_crosswalk:
+                    velocity.linear.x = lin_pred * ROAD_2_SPEEDUP_FACTOR
+                    velocity.angular.z = ang_pred * ROAD_2_SPEEDUP_FACTOR
                     
 
-                velocity.linear.x = lin_pred * NN_OUTPUT_SCALAR
-                velocity.angular.z = ang_pred * NN_OUTPUT_SCALAR
-
-                if self.time_starting_crosswalk is not None and (rospy.Time.now() - self.time_starting_crosswalk).to_sec() < CROSSWALK_CROSSING_TIME:
-                    velocity.linear.x = lin_pred * NN_OUTPUT_SCALAR * CROSSWALK_SPEED_UP
-                    velocity.angular.z = ang_pred * NN_OUTPUT_SCALAR  * CROSSWALK_SPEED_UP
-                    rospy.logwarn("speeding up to cross crosswalk!")
+                if self.time_starting_crosswalk is not None and (rospy.Time.now() - self.time_starting_crosswalk).to_sec() < CROSSWALK_TO_TRUCK_TIME:
+                    velocity.linear.x = lin_pred * ROAD_1_SPEEDUP_FACTOR
+                    velocity.angular.z = ang_pred * ROAD_1_SPEEDUP_FACTOR
+                    rospy.logwarn("speeding up after the crosswalk, before truck")
 
                 self.pub_cmd_vel.publish(velocity)
             except Exception as e:
@@ -218,7 +245,15 @@ class DrivingNode:
 
     def track_section_callback(self, msg):
         """Sets self.section"""
+
+        if msg.data == 'OffRoad' and not self.section == 'OffRoad' and self.auto_enabled:
+            velocity = Twist()
+            velocity.linear.x = -1.0
+            velocity.angular.z = 0.0
+            self.pub_cmd_vel.publish(velocity)
+
         self.section = msg.data
+
 
     def auto_drive_callback(self, msg):
         """Enables or disables automatic CNN-based driving."""

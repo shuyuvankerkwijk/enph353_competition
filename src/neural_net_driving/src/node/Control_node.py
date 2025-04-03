@@ -5,6 +5,7 @@ from gazebo_msgs.msg import ModelState
 from gazebo_msgs.srv import SetModelState
 from geometry_msgs.msg import Twist
 from pynput import keyboard
+from tf.transformations import quaternion_from_euler
 
 # ------------------------------------------------------------------------------
 #                                CONFIGURATION
@@ -28,13 +29,20 @@ RESET_ORI_Y = 0.0
 RESET_ORI_Z = -1.57
 RESET_ORI_W = 0.0
 
+# Euler angles: roll, pitch, yaw
+roll = 0.0
+pitch = 0.0
+yaw = 1.57  # -90 degrees
+
+q = quaternion_from_euler(roll, pitch, yaw)
+
 GRAVEL_POS_X = 0.5
 GRAVEL_POS_Y = 0.0
 GRAVEL_POS_Z = 0.2
-GRAVEL_ORI_X = 0.0
-GRAVEL_ORI_Y = 0.0
-GRAVEL_ORI_Z = -1.57
-GRAVEL_ORI_W = 0.0
+GRAVEL_ORI_X = q[0]
+GRAVEL_ORI_Y = q[1]
+GRAVEL_ORI_Z = q[2]
+GRAVEL_ORI_W = q[3]
 
 OFFROAD_POS_X = -3.9
 OFFROAD_POS_Y = 0.5
@@ -45,7 +53,7 @@ OFFROAD_ORI_Z = -1.57
 OFFROAD_ORI_W = 0.0
 
 HILL_POS_X = -4.1
-HILL_POS_Y = -2.3
+HILL_POS_Y = -2.25
 HILL_POS_Z = 0.2
 HILL_ORI_X = 0.0
 HILL_ORI_Y = 0.0
@@ -53,6 +61,11 @@ HILL_ORI_Z = 0.0
 HILL_ORI_W = 0.0
 
 PUBLISH_RATE_HZ = 10   # Rate to publish teleop/auto states
+
+ROAD_MAX_TIME = 60 #second
+GRAVEL_MAX_TIME = 35
+OFFROAD_MAX_TIME = 70
+HILL_MAX_TIME = 60
 
 # ------------------------------------------------------------------------------
 #                         CLASS: KeyboardController
@@ -78,6 +91,7 @@ class KeyboardController:
         self.pub_status = rospy.Publisher('/keyboard_controller/status', String, queue_size=1)
 
         self.sub_section = rospy.Subscriber('/track_section', String, self.section_callback)
+        self.sub_sift_done = rospy.Subscriber('/SIFT_done', Bool, self.finish_signal)
 
         # Track teleop/auto states
         self.auto = False
@@ -99,6 +113,14 @@ class KeyboardController:
         if not msg.data == self.section:
             self.section_start_time = rospy.Time.now()
             self.section = msg.data
+
+    def finish_signal(self, msg):
+        if msg.data:
+            self.teleop = False
+            self.auto = False
+            self.publish()
+            self.pub_cmd_vel.publish(self.zero_vel)
+            self.publish_stop()
 
     def handle_keypress(self, key):
         """
@@ -130,11 +152,13 @@ class KeyboardController:
             elif key.char == KEY_AUTO_DRIVE:  # 'a'
                 self.teleop = False
                 self.auto = True
+                self.section_start_time = rospy.Time.now()
                 self.publish()
 
             elif key.char == KEY_START_COMPETITION:  # 's'
                 self.teleop = False
                 self.auto = True
+                self.section_start_time = rospy.Time.now()
                 self.publish_start()
                 self.publish()
 
@@ -180,7 +204,7 @@ class KeyboardController:
         """
         Publishes a signal indicating a complete stop or end of competition.
         """
-        self.pub_score.publish('TEAM$,unknown,-1,AAAA')
+        self.pub_score.publish('TEAM4,unknown,-1,AAAA') #END RUN
 
     def publish(self):
         """
@@ -286,6 +310,28 @@ class KeyboardController:
             status_msg = String()
             status_msg.data = f"teleop={self.teleop}, auto={self.auto}"
             self.pub_status.publish(status_msg)
+            
+            if self.auto:
+                if self.section == 'Road':
+                    if (rospy.Time.now() - self.section_start_time).to_sec() >= ROAD_MAX_TIME:
+                        self.section_start_time = rospy.Time.now()
+                        self.pub_reset.publish('Gravel')
+                        self.teleport_gravel()
+                elif self.section == 'Gravel':
+                    if (rospy.Time.now() - self.section_start_time).to_sec() >= GRAVEL_MAX_TIME:
+                        self.section_start_time = rospy.Time.now()
+                        self.pub_reset.publish('OffRoad')
+                        self.teleport_offroad()
+                elif self.section == 'OffRoad':
+                    if (rospy.Time.now() - self.section_start_time).to_sec() >= OFFROAD_MAX_TIME:
+                        self.section_start_time = rospy.Time.now()
+                        self.pub_reset.publish('ramp')
+                        self.teleport_hill()
+                elif self.section == 'ramp':
+                    if (rospy.Time.now() - self.section_start_time).to_sec() >= HILL_MAX_TIME:
+                        self.section_start_time = rospy.Time.now()
+                        self.teleport_hill()
+
 
             rate.sleep()
 

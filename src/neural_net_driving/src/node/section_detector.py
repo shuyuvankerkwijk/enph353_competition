@@ -51,7 +51,7 @@ class MapSectionDetector:
         """
         Receives camera images, checks the bottom region for pink color,
         and if found (beyond a threshold) transitions to the next section
-        if enough cooldown time has passed.
+        if the pink line was gone for at least TRANSITION_COOLDOWN_SEC.
         """
         if not self.detection_active:
             return
@@ -61,12 +61,6 @@ class MapSectionDetector:
         except CvBridgeError:
             return
 
-        current_time = rospy.Time.now().to_sec()
-        if current_time - self.last_transition_time < TRANSITION_COOLDOWN_SEC:
-            # Too soon to detect a new transition
-            self.pub_sec.publish(self.section)
-            return
-
         # Focus on the bottom ~20% of the image
         height, width, _ = img_bgr.shape
         crop_top_index = int(0.8 * height)
@@ -74,15 +68,21 @@ class MapSectionDetector:
 
         # Pink mask
         pink_mask = cv2.inRange(bottom_region, LOWER_PINK_BOUNDS, UPPER_PINK_BOUNDS)
+        pink_visible = np.mean(pink_mask) > 0.2
 
-        if np.mean(pink_mask) > 0.2:
+        current_time = rospy.Time.now().to_sec()
+
+        if pink_visible:
+            if current_time - self.last_transition_time >= TRANSITION_COOLDOWN_SEC:
+                if self.section == 'Road':
+                    self.section = 'Gravel'
+                elif self.section == 'Gravel':
+                    self.section = 'OffRoad'
+                elif self.section == 'OffRoad':
+                    self.section = 'ramp'
+                self.last_transition_time = current_time  # prevent multiple transitions
+            # If pink is still in view, reset the cooldown timer
             self.last_transition_time = current_time
-            if self.section == 'Road':
-                self.section = 'Gravel'
-            elif self.section == 'Gravel':
-                self.section = 'OffRoad'
-            elif self.section == 'OffRoad':
-                self.section = 'ramp'
 
         self.pub_sec.publish(self.section)
 

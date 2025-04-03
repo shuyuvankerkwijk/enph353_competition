@@ -30,9 +30,18 @@ def loadCrimesProfileCompetition():
     raw = response.text.split('\n')
     # key_list   = raw[0].split(',')
     # value_list = raw[1].split(',')
-    key_list   = ['SIZE','VICTIM','CRIME','TIME','PLACE','MOTIVE','WEAPON','BANDIT']
-    value_list = ["B4G","J3LLY8EAN5", "P1LL0W FIGH7", "QUEST Z9XD", "CO06 BA2E", "FUN", "TICKLE GUN", "CAP WOBBLE"]#['KXQZYJV','KXQZYJV','KXQZYJV','KXQZYJV','KXQZYJV','KXQZYJV','KXQZYJV','KXQZYJV']
 
+    # key_list   = ['SIZE','VICTIM','CRIME','TIME','PLACE','MOTIVE','WEAPON','BANDIT']
+    # value_list = ["TWO","JEDIS", "DEFRAUD", "SPRING", "MARS", "PRIDE", "ANTIMATTER", "GODZILLA"]#['KXQZYJV','KXQZYJV','KXQZYJV','KXQZYJV','KXQZYJV','KXQZYJV','KXQZYJV','KXQZYJV']
+
+    key_list = ['SIZE', 'VICTIM', 'CRIME', 'TIME', 'PLACE', 'MOTIVE', 'WEAPON', 'BANDIT']
+
+    def generate_random_string():
+        length = random.randint(3, 12)
+        characters = string.ascii_uppercase + string.digits + ' '
+        return ''.join(random.choice(characters) for _ in range(length))
+
+    value_list = [generate_random_string() for _ in key_list]
 
     clues = {}
 

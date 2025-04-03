@@ -10,6 +10,8 @@ from collections import Counter
 from neural_net_driving.msg import ImageWithID
 import re
 from datetime import datetime
+from collections import Counter, defaultdict
+
 
 SIFT_IMAGE_HEIGHT = 1264
 SIFT_IMAGE_WIDTH = 1536
@@ -17,7 +19,7 @@ SIFT_TEMPLATE_SCALE = 0.4
 BLUE_THRESHOLD_PERCENTAGE = 0.55
 MIN_MATCH_COUNT = 24
 MIN_LETTER_AREA = 12000
-MAX_LETTER_AREA = 30000
+MAX_LETTER_AREA = 32000
 CATEGORY_LIST = ['SIZE','VICTIM','CRIME','TIME','PLACE','MOTIVE','WEAPON','BANDIT']
 
 class Sign:
@@ -102,24 +104,47 @@ class Concensus:
 
     def attempt_concensus(self):
         if self.last_updated_time is not None:
-            if (rospy.get_rostime() - self.last_updated_time).to_sec() >= 5:
+            if (rospy.get_rostime() - self.last_updated_time).to_sec() >= 3:
                 message = self.majority_vote()
                 return message
         return None
 
-    def majority_vote(self): #TODO: change this
+    def majority_vote(self):
+        if not self.messages:
+            return ""
+
         max_len = max(len(s) for s in self.messages)
         padded = [s.ljust(max_len) for s in self.messages]  # pad with spaces
         result = ""
+
         for i in range(max_len):
-            chars = [s[i] for s in padded]
-            most_common = Counter(chars).most_common(1)[0][0]
-            result += most_common
-        return result.strip()  # strip padding
+            weighted_counts = defaultdict(int)
+            for msg in padded:
+                char = msg[i]
+                weight = len(msg.strip())  # weight by original (unpadded) message length
+                weighted_counts[char] += weight
+
+            # Get the character with the highest total weight
+            most_common_char = max(weighted_counts.items(), key=lambda item: item[1])[0]
+            result += most_common_char
+
+        return result.strip()
+
+    # def majority_vote(self): 
+    #     max_len = max(len(s) for s in self.messages)
+    #     padded = [s.ljust(max_len) for s in self.messages]  # pad with spaces
+    #     result = ""
+    #     for i in range(max_len):
+    #         chars = [s[i] for s in padded]
+    #         most_common = Counter(chars).most_common(1)[0][0]
+    #         result += most_common
+    #     return result.strip()  # strip padding
     
 class sift_class:
 
     def __init__(self):
+        self.alive = True
+
         self.bridge = CvBridge()
         self.image_buffer = []
         self.section = None
@@ -129,6 +154,7 @@ class sift_class:
         self.pub_read = rospy.Publisher('/read_input_images', ImageWithID, queue_size=1000)
         self.sub_read = rospy.Subscriber('/read_image_results', String, self.prediction_callback)
         self.pub_score = rospy.Publisher('/score_tracker', String, queue_size=5)
+        self.pub_sift_done = rospy.Publisher('/SIFT_done', Bool,  queue_size=1)
         
         # setup object detection
         self.sift = cv2.SIFT_create()
@@ -194,7 +220,7 @@ class sift_class:
         # cv2.waitKey(1)
 
         # if percentage > 0.55%, process the image
-        if percentage_blue >= BLUE_THRESHOLD_PERCENTAGE:
+        if percentage_blue >= BLUE_THRESHOLD_PERCENTAGE and self.alive:
             rospy.loginfo(f"Appended image with threshold {percentage_blue}")
             self.image_buffer.append(cv2_img)
 
@@ -373,7 +399,7 @@ class sift_class:
         font = cv2.FONT_HERSHEY_SIMPLEX
         cv2.putText(circled_image, text, (10, 25), font, 0.8, (0, 0, 255), 2, cv2.LINE_AA)
 
-        desired_size = (int(243*1.8), int(200*1.8))
+        desired_size = (int(243*1.4), int(200*1.4))
         image_resized = cv2.resize(image, desired_size)
         warped_resized = cv2.resize(warped_image, desired_size)
         circled_resized = cv2.resize(circled_image, desired_size)
@@ -477,10 +503,13 @@ class sift_class:
                         self.pub_score.publish(f"TEAM4,unknown,7,{message}") # WEAPON - 7   
 
         # special last case
-        if category == "BANDIT" and len(concensus.messages) > 10 and (concensus.broadcast == False):
+        if category == "BANDIT" and len(concensus.messages) > 4 and (concensus.broadcast == False):
             message = concensus.majority_vote()
             self.pub_score.publish(f'TEAM4,unknown,8,{message}') # BANDIT - 8
-            self.pub_score.publish('TEAM4,unknown,-1,AAAA') #END RUN
+            concensus.broadcast = True
+            self.alive = False
+            self.pub_sift_done.publish(Bool(True))
+            
 
 
     def track_section_callback(self, msg):
@@ -504,7 +533,7 @@ def image_subscriber():
 
     # rospy.loginfo("SIFT node initialized!")
 
-    rate = rospy.Rate(5)  # 5Hz 
+    rate = rospy.Rate(10)  # 5Hz 
     while not rospy.is_shutdown():
         sift.process_image()
         sift.attempt_concensus()

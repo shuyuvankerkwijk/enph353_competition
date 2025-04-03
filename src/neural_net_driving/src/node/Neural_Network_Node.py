@@ -149,7 +149,7 @@ class ProcessingNode:
 
             result_str = f"id: {id}, prediction: {letter}"
             self.pub.publish(result_str)
-            
+
     # def process_image(self):
     #     if len(self.image_buffer) > 0:
     #         cv_image, id = self.image_buffer.pop(0)
@@ -170,7 +170,7 @@ if __name__ == '__main__':
     try:
         node = ProcessingNode()
         
-        rate = rospy.Rate(20)  # 10Hz
+        rate = rospy.Rate(64)  # 10Hz
         while not rospy.is_shutdown():
             node.process_image()
             rate.sleep()
