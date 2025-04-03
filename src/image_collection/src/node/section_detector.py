@@ -21,7 +21,7 @@ class MapSectionDetector:
         self.section = 'Road'
         self.pub_sec = rospy.Publisher('/track_section', String, queue_size=1)
         self.last_transition = rospy.Time.now().to_sec()
-        self.transition_cooldown = 5 #TODO change it so that line has to exit screen to reset
+        self.transition_cooldown = 15 #TODO change it so that line has to exit screen to reset
         self.frame_counter = 0
 
         self.listener = keyboard.Listener(on_press=self.parse)

@@ -77,9 +77,14 @@ class KeyboardController:
         self.pub_cmd_vel = rospy.Publisher('/B1/cmd_vel', Twist, queue_size=1)
         self.pub_status = rospy.Publisher('/keyboard_controller/status', String, queue_size=1)
 
+        self.sub_section = rospy.Subscriber('/track_section', String, self.section_callback)
+
         # Track teleop/auto states
         self.auto = False
         self.teleop = False
+
+        self.section = None
+        self.section_start_time = None
 
         # A zero Twist (for stopping motion)
         self.zero_vel = Twist()
@@ -89,6 +94,11 @@ class KeyboardController:
         # Start the keyboard listener on another thread
         self.listener = keyboard.Listener(on_press=self.handle_keypress)
         self.listener.start()
+
+    def section_callback(self, msg):
+        if not msg.data == self.section:
+            self.section_start_time = rospy.Time.now()
+            self.section = msg.data
 
     def handle_keypress(self, key):
         """
@@ -164,13 +174,13 @@ class KeyboardController:
         Publishes a signal indicating the start of the competition
         (e.g., time tracking).
         """
-        self.pub_score.publish('gadget, unknown, 0, AAAA')
+        self.pub_score.publish('TEAM4,unknown,0,AAAA')
 
     def publish_stop(self):
         """
         Publishes a signal indicating a complete stop or end of competition.
         """
-        self.pub_score.publish('gadget, unknown, -1, AAAA')
+        self.pub_score.publish('TEAM$,unknown,-1,AAAA')
 
     def publish(self):
         """

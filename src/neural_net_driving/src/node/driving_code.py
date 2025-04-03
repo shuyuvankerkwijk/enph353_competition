@@ -24,7 +24,9 @@ MOTION_COUNT_FOR_ACTIVE_CROSSING = 500                 # If motion is <= this, w
 CROSSWALK_SPEED_UP = 1.5
 CROSSWALK_CROSSING_TIME = 2
 
-LINEAR_CLAMPING_SPEED = 0.005
+LINEAR_CLAMPING_SPEED_TRUCK = 0.085
+LINEAR_CLAMPING_SPEED_YODA = 0.05
+
 
 STATUS_PUBLISH_RATE_HZ = 2
 SERVICE_REGEX = r'(.*?) -> lin:([-\d\.]+), ang:([-\d\.]+)'
@@ -185,7 +187,11 @@ class DrivingNode:
                 velocity = Twist()
 
                 # this zeroes the linear velocity to prevent unwanted drivting behaviour  when the robot is supposed to be waiting at for example Yoda, or the truck.
-                if lin_pred < LINEAR_CLAMPING_SPEED and ((not self.has_not_reached_crosswalk and self.section == "Road") or self.section == "OffRoad"):
+                if lin_pred < LINEAR_CLAMPING_SPEED_TRUCK and not self.has_not_reached_crosswalk and self.section == "Road":
+                    lin_pred = 0.0
+                    rospy.logwarn("zero'ed the vel")
+
+                if lin_pred < LINEAR_CLAMPING_SPEED_YODA and self.section == "OffRoad":
                     lin_pred = 0.0
                     rospy.logwarn("zero'ed the vel")
                     

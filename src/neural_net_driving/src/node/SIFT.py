@@ -16,6 +16,8 @@ SIFT_IMAGE_WIDTH = 1536
 SIFT_TEMPLATE_SCALE = 0.4
 BLUE_THRESHOLD_PERCENTAGE = 0.55
 MIN_MATCH_COUNT = 24
+MIN_LETTER_AREA = 12000
+MAX_LETTER_AREA = 30000
 CATEGORY_LIST = ['SIZE','VICTIM','CRIME','TIME','PLACE','MOTIVE','WEAPON','BANDIT']
 
 class Sign:
@@ -126,7 +128,7 @@ class sift_class:
         self.pub_status = rospy.Publisher('/SIFT_node/status', String, queue_size=1)
         self.pub_read = rospy.Publisher('/read_input_images', ImageWithID, queue_size=1000)
         self.sub_read = rospy.Subscriber('/read_image_results', String, self.prediction_callback)
-        self.pub_reads = rospy.Publisher('/score_tracker', String, queue_size=5)
+        self.pub_score = rospy.Publisher('/score_tracker', String, queue_size=5)
         
         # setup object detection
         self.sift = cv2.SIFT_create()
@@ -202,6 +204,7 @@ class sift_class:
 
         image = self.image_buffer.pop(0)
 
+        # 1. SIFT and apply homography
         try:
             image_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
             kp, des = self.sift.detectAndCompute(image_gray, None)
@@ -238,11 +241,11 @@ class sift_class:
             H_S = S_template_inv @ H @ S_image
 
             warped_image = cv2.warpPerspective(image, H_S, (self.template_img.shape[1], self.template_img.shape[0]))
-
         except Exception as e:
             rospy.logerr(f"Exception during SIFT/homography: {e}")
             return
         
+        # 2. Thresholding and cropping
         try:
             blue_mask = self.blue_threshold_2(warped_image)
 
@@ -286,7 +289,7 @@ class sift_class:
 
             refining_used = False
 
-            def refine_letter_boxes(boxes, flood_filled, threshold_min, threshold_max):
+            def refine_letter_boxes(boxes, flood_filled):
                 refined_boxes = []
 
                 useful = False
@@ -294,7 +297,10 @@ class sift_class:
                 for i, (x, y, w, h) in enumerate(boxes):
                     area = w * h
 
-                    if area > threshold_max:
+                    if area > 300000:
+                        continue
+
+                    if area > MAX_LETTER_AREA:
                         useful = True
 
                         roi = flood_filled[y:y+h, x:x+w]
@@ -303,7 +309,7 @@ class sift_class:
                         vertical_sum = np.sum(roi == 255, axis=0)
 
                         # Find the column with the minimum number of white pixels (i.e. gap)
-                        split_idx = np.argmin(vertical_sum[w//3:2*w//3])
+                        split_idx = np.argmin(vertical_sum[w//3:2*w//3]) + w//3
 
                         rospy.loginfo("Split index: " + str(split_idx))
 
@@ -311,7 +317,7 @@ class sift_class:
                         right_area = (w - split_idx) * h
 
                         # Only split if both sides are big enough
-                        if left_area > threshold_min and right_area > threshold_min:
+                        if left_area > MIN_LETTER_AREA and right_area > MIN_LETTER_AREA:
                             rospy.loginfo("Splitting box w split_idx")
                             refined_boxes.append((x, y, split_idx, h))
                             refined_boxes.append((x + split_idx, y, w - split_idx, h))
@@ -320,74 +326,64 @@ class sift_class:
                             rospy.loginfo("Splitting box w half")
                             refined_boxes.append((x, y, w//2, h))
                             refined_boxes.append((x + w//2, y, w//2, h))
+
                     else:
                         refined_boxes.append((x, y, w, h))
 
                 return sorted(refined_boxes, key=lambda b: b[0]), useful
 
-            if 4 <= len(top_half) <= 6:
-                top_half_refined, refining_used = refine_letter_boxes(top_half, flood_filled, 12000, 30000)
-                bottom_half_refined, refining_used = refine_letter_boxes(bottom_half, flood_filled, 12000, 30000)
+            if not (4 <= len(top_half) <= 6):
+                return
+            
+            top_half, refining_used = refine_letter_boxes(top_half, flood_filled)
+            bottom_half, refining_used = refine_letter_boxes(bottom_half, flood_filled)
 
             def crop_or_pad_box(letter_boxes):
                 target_width = 200
                 target_height = 240
                 crops = []
                 for (x, y, w, h) in letter_boxes:
-                    crop = flood_filled[y:y + h, x:x + w]
-                    crop = cv2.resize(crop, (min(w, target_width), min(h, target_height)), interpolation=cv2.INTER_AREA)
-                    h2, w2 = crop.shape
-                    pad_top = (target_height - h2) // 2
-                    pad_bottom = target_height - h2 - pad_top
-                    pad_left = (target_width - w2) // 2
-                    pad_right = target_width - w2 - pad_left
-                    padded = cv2.copyMakeBorder(
-                        crop, pad_top, pad_bottom, pad_left, pad_right,
-                        borderType=cv2.BORDER_CONSTANT, value=0
-                    )
-                    crops.append(padded)
+                    if MIN_LETTER_AREA < w*h < MAX_LETTER_AREA:
+                        crop = flood_filled[y:y + h, x:x + w]
+                        crop = cv2.resize(crop, (min(w, target_width), min(h, target_height)), interpolation=cv2.INTER_AREA)
+                        h2, w2 = crop.shape
+                        pad_top = (target_height - h2) // 2
+                        pad_bottom = target_height - h2 - pad_top
+                        pad_left = (target_width - w2) // 2
+                        pad_right = target_width - w2 - pad_left
+                        padded = cv2.copyMakeBorder(
+                            crop, pad_top, pad_bottom, pad_left, pad_right,
+                            borderType=cv2.BORDER_CONSTANT, value=0
+                        )
+                        crops.append(padded)
                 return crops
 
             top_half_crops = crop_or_pad_box(top_half)
             bottom_half_crops = crop_or_pad_box(bottom_half)
-
         except Exception as e:
             rospy.logerr(f"Exception during thresholding/cropping: {e}")
             return
     
+        # 3. Plot telemetry
         circled_image = cv2.cvtColor(flood_filled, cv2.COLOR_GRAY2BGR)
         for (x, y, w, h) in (top_half + bottom_half):
             cv2.rectangle(circled_image, (x, y), (x + w, y + h), (0, 255, 0), 2)
 
-        try:
-            circled_image_2 = cv2.cvtColor(flood_filled, cv2.COLOR_GRAY2BGR)
-            for (x, y, w, h) in (top_half_refined + bottom_half_refined):
-                cv2.rectangle(circled_image_2, (x, y), (x + w, y + h), (0, 255, 0), 2)
-        except Exception as e:
-            circled_image_2 = cv2.cvtColor(flood_filled, cv2.COLOR_GRAY2BGR)
-
         text = f"Refining: {'USED' if refining_used else 'NOT USED'}"
         font = cv2.FONT_HERSHEY_SIMPLEX
-        cv2.putText(circled_image_2, text, (10, 25), font, 0.8, (0, 0, 255), 2, cv2.LINE_AA)
+        cv2.putText(circled_image, text, (10, 25), font, 0.8, (0, 0, 255), 2, cv2.LINE_AA)
 
         desired_size = (int(243*1.8), int(200*1.8))
         image_resized = cv2.resize(image, desired_size)
         warped_resized = cv2.resize(warped_image, desired_size)
-        # blue_mask_resized = cv2.resize(blue_mask, desired_size)
         circled_resized = cv2.resize(circled_image, desired_size)
-        circled_2_resized = cv2.resize(circled_image_2, desired_size)
 
-        # # If blue_mask is grayscale, convert to BGR so we can concatenate
-        # if len(blue_mask_resized.shape) == 2:
-        #     blue_mask_resized = cv2.cvtColor(blue_mask_resized, cv2.COLOR_GRAY2BGR)
+        combined = np.hstack((image_resized, warped_resized, circled_resized))
 
-        # Concatenate images horizontally
-        combined = np.hstack((image_resized, warped_resized, circled_resized, circled_2_resized))
-
-        # Show using OpenCV
         cv2.imshow("PIPELINE", combined)
         cv2.waitKey(1)
         
+        # 4. Publish for CNN
         try:
             self.sign_index += 1
             self.signs[int(self.sign_index)] = Sign(len(top_half_crops), len(bottom_half_crops))
@@ -407,11 +403,9 @@ class sift_class:
                 msg.id = f"{self.sign_index}b{i}"
                 msg.image = ros_image
                 self.pub_read.publish(msg)
-
         except Exception as e:
             rospy.logerr(f"Exception during CNN classification/publishing: {e}")
 
-    
     def parse_result_string(self, result_str):
         """
         Parses strings like: "id: 42t7, prediction: 26"
@@ -432,12 +426,18 @@ class sift_class:
         else:
             return None, None, None, None
 
-
     def prediction_callback(self, result_string):
-
         try:
             sign_index, type_char, letter_index, prediction = self.parse_result_string(result_string.data)
-            prediction = chr(ord('A') + prediction) # convert to letter
+            if 0 <= prediction <= 25:
+                prediction = chr(ord('A') + prediction)  # A–Z
+            elif 26 <= prediction <= 35:
+                prediction = chr(ord('0') + (prediction - 26))  # 0–9
+            else:
+                rospy.logerr(f"Prediction index {prediction} out of expected range.")
+                prediction = '?'  # fallback
+            
+            # prediction = chr(ord('A') + prediction) # convert to letter
 
             sign = self.signs[int(sign_index)]
             sign.place(type_char, letter_index, prediction)
@@ -451,28 +451,37 @@ class sift_class:
             rospy.logerr(f"Exception during prediction callback: {e}")
 
     def attempt_concensus(self):
+
+        # attempt normal concensus
         for category, concensus in self.consensuses.items():
-            message = concensus.attempt_concensus()
-            if message is not None:
-                if concensus.broadcast == False:
+            if category != "BANDIT" and concensus.broadcast == False:
+                message = concensus.attempt_concensus()
+                if message is not None:
                     rospy.logerr("Determined: " + category + ": " + message + " from " + str(len(concensus.messages)) + " messages")
                     self.pub_status.publish(category + ": " + message)
                     concensus.broadcast = True
 
-                # if category == "SIZE":
-                #     self.pub_reads.publish(f"SIZE {message}")
-                # elif category == "CRIME":
-                #     self.pub_reads.publish(f"CRIME {message}")
-                # elif category == "TIME":
-                #     self.pub_reads.publish(f"TIME {message}")
-                # elif category == "PLACE":
-                #     self.pub_reads.publish(f"PLACE {message}")
-                # elif category == "MOTIVE":
-                #     self.pub_reads.publish(f"MOTIVE {message}")
-                # elif category == "WEAPON":
-                #     self.pub_reads.publish(f"WEAPON {message}")
-                # elif category == "BANDIT":
-                #     self.pub_reads.publish(f"BANDIT {message}")
+                    if category == "SIZE":
+                        self.pub_score.publish(f'TEAM4,unknown,1,{message}') # SIZE - 1
+                    elif category == "VICTIM":
+                        self.pub_score.publish(f'TEAM4,unknown,2,{message}') # VICTIM - 2
+                    elif category == "CRIME":
+                        self.pub_score.publish(f'TEAM4,unknown,3,{message}') # CRIME - 3
+                    elif category == "TIME":
+                        self.pub_score.publish(f"TEAM4,unknown,4,{message}") # TIME - 4
+                    elif category == "PLACE":
+                        self.pub_score.publish(f"TEAM4,unknown,5,{message}") # PLACE - 5
+                    elif category == "MOTIVE":
+                        self.pub_score.publish(f"TEAM4,unknown,6,{message}") # MOTIVE - 6
+                    elif category == "WEAPON":
+                        self.pub_score.publish(f"TEAM4,unknown,7,{message}") # WEAPON - 7   
+
+        # special last case
+        if category == "BANDIT" and len(concensus.messages) > 10 and (concensus.broadcast == False):
+            message = concensus.majority_vote()
+            self.pub_score.publish(f'TEAM4,unknown,8,{message}') # BANDIT - 8
+            self.pub_score.publish('TEAM4,unknown,-1,AAAA') #END RUN
+
 
     def track_section_callback(self, msg):
         self.section = msg.data

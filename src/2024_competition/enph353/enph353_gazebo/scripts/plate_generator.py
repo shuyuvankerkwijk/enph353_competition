@@ -31,7 +31,7 @@ def loadCrimesProfileCompetition():
     # key_list   = raw[0].split(',')
     # value_list = raw[1].split(',')
     key_list   = ['SIZE','VICTIM','CRIME','TIME','PLACE','MOTIVE','WEAPON','BANDIT']
-    value_list = ["BAG","JELLYBEANS", "PILLOW FIGHT", "STORY TIME", "MOON BASE", "FUN", "TICKLE GUN", "CAP WOBBLE"]#['KXQZYJV','KXQZYJV','KXQZYJV','KXQZYJV','KXQZYJV','KXQZYJV','KXQZYJV','KXQZYJV']
+    value_list = ["B4G","J3LLY8EAN5", "P1LL0W FIGH7", "QUEST Z9XD", "CO06 BA2E", "FUN", "TICKLE GUN", "CAP WOBBLE"]#['KXQZYJV','KXQZYJV','KXQZYJV','KXQZYJV','KXQZYJV','KXQZYJV','KXQZYJV','KXQZYJV']
 
 
     clues = {}

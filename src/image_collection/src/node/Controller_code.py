@@ -108,7 +108,7 @@ def joystick_publisher():
         if joystick_data:
             x, y, r = joystick_data
 
-            if y < 0:
+            if r and y < 0:
                 y=0
 
             # Create and publish a Twist message

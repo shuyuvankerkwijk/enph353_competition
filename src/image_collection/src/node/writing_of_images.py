@@ -33,7 +33,7 @@ class writing_Images:
                 return
             
             save_image = cv2.resize(cv2_img, (IMG_WIDTH, IMG_HEIGHT), interpolation=cv2.INTER_LINEAR)
-
+            cv2_img = cv2.resize(cv2_img, (IMG_WIDTH*2, IMG_HEIGHT*2), interpolation=cv2.INTER_LINEAR)
             # If 'r' (record) is True, save the image
             if self.r:
                 # Make a filename from current time + joystick values

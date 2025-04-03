@@ -4,6 +4,7 @@ import cv2
 import tensorflow as tf
 import numpy as np
 from cv_bridge import CvBridge, CvBridgeError
+import time
 
 # ROS message types
 from sensor_msgs.msg import Image
@@ -27,8 +28,12 @@ class ProcessingNode:
         self.model_Gravel = tf.keras.models.load_model('/home/fizzer/ros_ws/training_for_driving/Gravel/best_model.h5')
         self.model_OffRoad = tf.keras.models.load_model('/home/fizzer/ros_ws/training_for_driving/OffRoad/best_model.h5')
         self.model_ramp = tf.keras.models.load_model('/home/fizzer/ros_ws/training_for_driving/ramp/best_model.h5')
-        self.model_reading = tf.keras.models.load_model("/home/fizzer/ros_ws/training_for_reading/V4_model_stripped.h5")
+        # self.model_reading = tf.keras.models.load_model("/home/fizzer/ros_ws/training_for_reading/V4_model_stripped.h5")
 
+        self.interpreter_reading = tf.lite.Interpreter(model_path="/home/fizzer/ros_ws/training_for_reading/V4_model_quantized.tflite")
+        self.interpreter_reading.allocate_tensors()
+        self.input_details_reading = self.interpreter_reading.get_input_details()
+        self.output_details_reading = self.interpreter_reading.get_output_details()
 
         rospy.logdebug("loaded cnns")
         # Advertise 4 services
@@ -124,16 +129,41 @@ class ProcessingNode:
         if len(self.image_buffer) > 0:
             cv_image, id = self.image_buffer.pop(0)
 
-            # rospy.loginfo(f"Received image with ID: {id}. Shape: {cv_image.shape}, DType: {cv_image.dtype}, Max: {np.max(cv_image)}") #TODO: shorten this, only as a check
+            start = time.time()
+
+            # Normalize + reshape input
             cv_image = cv_image.astype(np.float32) / 255.0
             cv_image = cv_image[..., None]      # (H, W, 1)
             cv_image = np.expand_dims(cv_image, 0)  # (1, H, W, 1)
 
-            letter = np.argmax(self.model_reading.predict(cv_image)[0])
+            # Set input and run inference
+            self.interpreter_reading.set_tensor(self.input_details_reading[0]['index'], cv_image)
+            self.interpreter_reading.invoke()
+            output = self.interpreter_reading.get_tensor(self.output_details_reading[0]['index'])
+
+            # Get predicted label
+            letter = int(np.argmax(output[0]))
+
+            duration = time.time() - start
+            rospy.loginfo(f"Inference time (TFLite): {duration:.4f} seconds")
 
             result_str = f"id: {id}, prediction: {letter}"
-
             self.pub.publish(result_str)
+            
+    # def process_image(self):
+    #     if len(self.image_buffer) > 0:
+    #         cv_image, id = self.image_buffer.pop(0)
+
+    #         # rospy.loginfo(f"Received image with ID: {id}. Shape: {cv_image.shape}, DType: {cv_image.dtype}, Max: {np.max(cv_image)}") #TODO: shorten this, only as a check
+    #         cv_image = cv_image.astype(np.float32) / 255.0
+    #         cv_image = cv_image[..., None]      # (H, W, 1)
+    #         cv_image = np.expand_dims(cv_image, 0)  # (1, H, W, 1)
+
+    #         letter = np.argmax(self.model_reading.predict(cv_image)[0])
+
+    #         result_str = f"id: {id}, prediction: {letter}"
+
+    #         self.pub.publish(result_str)
 
 
 if __name__ == '__main__':
